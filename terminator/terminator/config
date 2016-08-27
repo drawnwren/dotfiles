@@ -1,0 +1,25 @@
+[global_config]
+  borderless = True
+  title_font = Inconsolatazi4 6
+  title_hide_sizetext = True
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    copy_on_selection = True
+    custom_command = TERM=xterm-256color zsh
+    font = Inconsolata LGC for Powerline Medium 7
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_custom_command = True
+    use_system_font = False

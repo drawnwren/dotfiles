@@ -51,7 +51,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (when ha/fixed-font-family
   (set-frame-font ha/fixed-font-family)
-  (set-face-attribute 'default nil :font ha/fixed-font-family :height 140)
+  (set-face-attribute 'default nil :font ha/fixed-font-family :height 100)
   (set-face-font 'default ha/fixed-font-family))
 
 
@@ -186,8 +186,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
   (list (list "d" 'color-theme-sanityinc-tomorrow-day      'org-src-color-blocks-light)  ; White on Black
         (list "l" 'color-theme-sanityinc-tomorrow-eighties 'org-src-color-blocks-dark)   ; Lt. Gray on Gray
         (list "m" 'color-theme-sanityinc-tomorrow-bright   'org-src-color-blocks-dark)   ; Bright on Black
-        (list "n" 'color-theme-sanityinc-tomorrow-night    'org-src-color-blocks-dark))) ; White on Gray
-
+        (list "n" 'color-theme-sanityinc-tomorrow-night    'org-src-color-blocks-dark))) ; White on Graydd
 ;; Undo and Redo
 
 ;;   According to [[http://ergoemacs.org/emacs/emacs_best_redo_mode.html][this article]], I get better functionality than

@@ -37,7 +37,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (defvar ha/fixed-font-family
   (cond ((x-list-fonts "Inconsolata")     "Inconsolata")
-        ((x-list-fonts "Hasklig"          "Hasklig"))
+        ((x-list-fonts "Hasklig")          "Hasklig")
         ((x-list-fonts "Source Code Pro") "Source Code Pro")
         ((x-list-fonts "Anonymous Pro")   "Anonymous Pro")
         ((x-list-fonts "M+ 1mn")          "M+ 1mn"))

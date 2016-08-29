@@ -213,6 +213,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
   (interactive)
   (set-frame-parameter nil 'fullscreen 'fullboth))
 
+;;remove the menu and scrollbars
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
 
 
 ;; When I am using my large monitors with a full-screen Emacs session

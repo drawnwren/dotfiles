@@ -5,6 +5,8 @@ Plug 'ternjs/tern_for_vim'
 Plug 'ctlrpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 set nocompatible

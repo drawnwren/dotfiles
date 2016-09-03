@@ -472,7 +472,7 @@ user."
   :bind ("C-x g" . magit-status))
 
 (require 'init-browser)
-
+(require 'init-evil)
 (require 'init-eshell)
 
 (when window-system

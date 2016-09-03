@@ -1,6 +1,6 @@
 [global_config]
   borderless = True
-  title_font = Inconsolatazi4 6
+  title_font = ProggyCleanTTSZ Nerd Font 6
   title_hide_sizetext = True
   title_use_system_font = False
 [keybindings]
@@ -18,7 +18,7 @@
     background_image = None
     copy_on_selection = True
     custom_command = TERM=xterm-256color zsh
-    font = Inconsolata LGC for Powerline Medium 7
+    font = ProggyCleanTTSZ NF 9
     scrollbar_position = hidden
     show_titlebar = False
     use_custom_command = True

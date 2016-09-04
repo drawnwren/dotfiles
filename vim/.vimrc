@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'ctlrpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'pangloss/vim-javascript'

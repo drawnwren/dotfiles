@@ -321,7 +321,7 @@ user."
     (add-hook hook (lambda () (flyspell-mode -1))))
 
   :config
-  (setq ispell-program-name "/usr/local/bin/aspell"
+  (setq ispell-program-name "/usr/bin/aspell"
         ispell-dictionary "american" ; better for aspell
         ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")
         ispell-list-command "--list")

@@ -41,9 +41,9 @@ set nocompatible
 set clipboard=unnamedplus
 
 colorscheme molokai
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 set encoding=utf-8
@@ -101,7 +101,7 @@ vnoremap <F1> <ESC>
 nnoremap ; :
 nnoremap <leader>a :Ack
 
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 nnoremap <leader>w <C-w>v<C-w>l
 

@@ -194,7 +194,7 @@
         background: var(--bg-dark) !important;
         
         /* --- Uncomment section below to attach url-bar to the tab-bar [EXPERIMENTAL] (Require a line in "#nav-bar" above) --- */
-        margin-left: 200px !important;
+        margin-left: 170px !important;
     }
     #TabsToolbar::after { display: none !important; }
     .tabbrowser-tab::before, .tabbrowser-tab::after { background: none !important; opacity: 1 !important; visibility: visible !important; }

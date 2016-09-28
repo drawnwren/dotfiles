@@ -3,11 +3,12 @@ Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ctlrpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
+Plug 'terryma/vim-expand-region'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomlion/vim-solidity'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -64,6 +65,15 @@ set relativenumber
 set undofile
 
 let mapleader = "\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>a :Ack
+nnoremap <Leader>l <C-w>v<C-w>l
+nnoremap <Leader><space> :noh<cr>
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)nmap <Leader><Leader> V
+
 noremap / /\v
 vnoremap / /\v
 set ignorecase
@@ -72,7 +82,6 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -98,12 +107,10 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; :
-nnoremap <leader>a :Ack
 
 inoremap jk <ESC>
 
-nnoremap <leader>w <C-w>v<C-w>l
+noremap gV `[v`]
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

@@ -72,56 +72,6 @@
 
 (require 'init-hydra)
 
-(use-package fancy-narrow
-  :ensure t
-  :config
-  (defun ha/highlight-block ()
-    "Highlights a 'block' in a buffer defined by the first blank
-     line before and after the current cursor position. Uses the
-     'fancy-narrow' mode to high-light the block."
-    (interactive)
-    (let (cur beg end)
-      (setq cur (point))
-      (setq end (or (re-search-forward  "^\s*$" nil t) (point-max)))
-      (goto-char cur)
-      (setq beg (or (re-search-backward "^\s*$" nil t) (point-min)))
-      (fancy-narrow-to-region beg end)
-      (goto-char cur)))
-
-  (defun ha/highlight-section (num)
-    "If some of the buffer is highlighted with the `fancy-narrow'
-     mode, then un-highlight it by calling `fancy-widen'.
-
-     If region is active, call `fancy-narrow-to-region'.
-
-     If NUM is 0, highlight the current block (delimited by blank
-     lines). If NUM is positive or negative, highlight that number
-     of lines.  Otherwise, called `fancy-narrow-to-defun', to
-     highlight current function."
-    (interactive "p")
-    (cond
-     ((fancy-narrow-active-p)  (fancy-widen))
-     ((region-active-p)        (fancy-narrow-to-region (region-beginning) (region-end)))
-     ((= num 0)                (ha/highlight-block))
-     ((= num 1)                (fancy-narrow-to-defun))
-     (t                        (progn (ha/expand-region num)
-                                      (fancy-narrow-to-region (region-beginning) (region-end))))))
-
-  :bind ("C-M-+" . ha/highlight-section))
-
-(defun narrow-or-widen-dwim (p)
-  "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
-Intelligently means: region, subtree, or defun, whichever applies
-first.
-With prefix P, don't widen, just narrow even if buffer is already
-narrowed."
-  (interactive "P")
-  (declare (interactive-only))
-  (cond ((and (buffer-narrowed-p) (not p)) (widen))
-        ((region-active-p)
-         (narrow-to-region (region-beginning) (region-end)))
-        ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
-        (t (narrow-to-defun))))
 
 (use-package ace-window
   :ensure t
@@ -130,10 +80,6 @@ narrowed."
   (global-set-key (kbd "C-x o") 'ace-window)
   :diminish ace-window-mode)
 
-(use-package kpm-list
-  :ensure t
-  :bind ("S-<f8>" . kpm-list)
-  ("C-x C-b" . kpm-list))
 
 (use-package avy
   :ensure t
@@ -166,34 +112,6 @@ narrowed."
      ("l" mc/edit-lines                      "all-lines")
      ("e" mc/edit-ends-of-lines              "end-lines"))))
 
-(use-package expand-region
-  :ensure t
-  :config
-  (defun ha/expand-region (lines)
-    "Prefix-oriented wrapper around Magnar's `er/expand-region'.
-
-Call with LINES equal to 1 (given no prefix), it expands the
-region as normal.  When LINES given a positive number, selects
-the current line and number of lines specified.  When LINES is a
-negative number, selects the current line and the previous lines
-specified.  Select the current line if the LINES prefix is zero."
-    (interactive "p")
-    (cond ((= lines 1)   (er/expand-region 1))
-          ((< lines 0)   (ha/expand-previous-line-as-region lines))
-          (t             (ha/expand-next-line-as-region (1+ lines)))))
-
-  (defun ha/expand-next-line-as-region (lines)
-    (message "lines = %d" lines)
-    (beginning-of-line)
-    (set-mark (point))
-    (end-of-line lines))
-
-  (defun ha/expand-previous-line-as-region (lines)
-    (end-of-line)
-    (set-mark (point))
-    (beginning-of-line (1+ lines)))
-
-  :bind ("C-=" . ha/expand-region))
 
 (setq ls-lisp-use-insert-directory-program nil)
 
@@ -264,16 +182,8 @@ user."
   :init      (setq ag-highlight-search t)
   :config    (add-to-list 'ag-arguments "--word-regexp"))
 
-(setq locate-command "mdfind")  ;; Use Mac OS X's Spotlight
 (global-set-key (kbd "C-c f l") 'locate)
 
-(use-package recentf
-  :init
-  (setq recentf-max-menu-items 25)
-  (setq recentf-auto-cleanup 'never)
-  ;; (setq recentf-keep '(file-remote-p file-readable-p))
-  (recentf-mode 1)
-  :bind ("C-c f f" . recentf-open-files))
 
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
@@ -287,19 +197,6 @@ user."
   (save-some-buffers t))
 
 (add-hook 'focus-out-hook 'save-all)
-
-(use-package company
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
-  :config
-  (add-to-list 'company-backends 'company-math-symbols-unicode)
-  :diminish company-mode)
-
-(use-package company-quickhelp
-  :ensure t
-  :config
-  (company-quickhelp-mode 1))
 
 (use-package yasnippet
   :ensure t
@@ -335,11 +232,6 @@ user."
                                                 nil
                                                 utf-8)))
 
-(use-package goto-chg
-  :ensure t
-  :bind (("M-p" . goto-last-change)
-         ("M-n" . goto-last-change-reverse)))
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
@@ -347,12 +239,6 @@ user."
 (setq-default save-place t)
 (setq save-place-forget-unreadable-files t)
 (setq save-place-skip-check-regexp "\\`/\\(?:cdrom\\|floppy\\|mnt\\|/[0-9]\\|\\(?:[^@/:]*@\\)?[^@/:]*[^@/:.]:\\)")
-
-(bind-keys :map isearch-mode-map
-           ("<left>"  . isearch-repeat-backward)
-           ("<right>" . isearch-repeat-forward)
-           ("<up>"    . isearch-ring-retreat)
-           ("<down>"  . isearch-ring-advance))
 
 (use-package flycheck
   :ensure t
@@ -383,25 +269,6 @@ user."
   :init
   (add-hook 'emacs-lisp-mode-hook 'color-identifiers-mode)
   :diminish color-identifiers-mode)
-
-(defun indent-defun ()
-  "Indent current defun.
-  Do nothing if mark is active (to avoid deactivaing it), or if
-  buffer is not modified (to avoid creating accidental
-  modifications)."
-  (interactive)
-  (unless (or (region-active-p)
-              buffer-read-only
-              (null (buffer-modified-p)))
-    (let ((l (save-excursion (beginning-of-defun 1) (point)))
-          (r (save-excursion (end-of-defun 1) (point))))
-      (cl-letf (((symbol-function 'message) #'ignore))
-        (indent-region l r)))))
-
-(defun activate-aggressive-indent ()
-  "Locally add `ha/indent-defun' to `post-command-hook'."
-  (add-hook 'post-command-hook
-            'indent-defun nil 'local))
 
 (use-package lisp-mode
   :init
@@ -471,9 +338,12 @@ user."
 
   :bind ("C-x g" . magit-status))
 
-(require 'init-browser)
+;; All of my requires down here at the end
+
 (require 'init-evil)
-(require 'init-eshell)
+
+(require 'init-clojure)
+(require 'init-javascript)
 
 (when window-system
   (let ((path-from-shell (shell-command-to-string "/bin/bash -l -c 'echo $PATH'")))
@@ -483,9 +353,5 @@ user."
 (if (window-system)
     (require 'init-client)
   (require 'init-server))
-
-(require 'init-clojure)
-
-(require 'init-javascript)
 
 (provide 'init-main)

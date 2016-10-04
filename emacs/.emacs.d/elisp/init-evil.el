@@ -13,29 +13,19 @@
 
 (my-move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
 
-;;;(my-move-key evil-motion-state-map evil-normal-state-map " ")
+(key-chord-mode 1)
+(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
 
-;;; C-c as general purpose escape key sequence.
-;;;
-(defun my-esc (prompt)
-  "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
-  (cond
+(defvar my-leader-map
+  (make-sparse-keymap)
+  "Keymap for 'leader key' shortcuts.")
 
-   ;; If we're in one of the Evil states that defines [escape] key, return [escape] so as
-   ;; Key Lookup will use it.
-   ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p) (evil-visual-state-p)) [escape])
+(evil-define-key 'normal global-map " " my-leader-map)
 
-   ;; This is the best way I could infer for now to have C-c work during evil-read-key.
-   ;; Note: As long as I return [escape] in normal-state, I don't need this.
-   ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
-   (t (kbd "C-g"))))
+(define-key my-leader-map "w" 'save-buffer)
 
-(define-key key-translation-map (kbd "jk") 'my-esc)
+(define-key my-leader-map "b" 'list-buffers)
 
-;; Works around the fact that Evil uses read-event directly when in operator state, which
-;; doesn't use the key-translation-map.
-(define-key evil-operator-state-map (kbd "jk") 'keyboard-quit)
-
-(set-quit-char "jk")
+(evil-mode)
 
 (provide 'init-evil)

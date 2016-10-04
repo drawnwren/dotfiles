@@ -120,7 +120,7 @@ to the next parenthesis."
   :init
   (add-hook 'after-init-hook 'global-flycheck-mode)
   :config
-  (use-package flychechhk
+  (use-package flycheck
     :config
     (flycheck-clojure-setup)))
 

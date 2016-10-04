@@ -1,28 +1,33 @@
-call plug#begin('~/.vim/plugged')
-Plug 'flazz/vim-colorschemes'
-Plug 'scrooloose/nerdtree'
-Plug 'ternjs/tern_for_vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
-Plug 'pangloss/vim-javascript'
-Plug 'vim-airline/vim-airline'
-Plug 'terryma/vim-expand-region'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tomlion/vim-solidity'
-Plug 'vim-airline/vim-airline-themes'
-call plug#end()
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin('~/.vim/dein')
+call dein#add('Shougo/dein.vim')
+call dein#add('flazz/vim-colorschemes')
+call dein#add('scrooloose/nerdtree')
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('neomake/neomake')
+call dein#add('pangloss/vim-javascript')
+call dein#add('vim-airline/vim-airline')
+call dein#add('terryma/vim-expand-region')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('tomlion/vim-solidity')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('Valloric/YouCompleteMe')
+call dein#end()
+
+filetype plugin indent on
+syntax enable
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd InsertLeave,TextChanged * update | Neomake
 
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
@@ -59,7 +64,6 @@ set visualbell
 set cursorline
 set ttyfast
 set ruler
-set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
 set undofile
@@ -69,10 +73,13 @@ nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ack
+nnoremap <Leader>n :NERDTree<CR>
 nnoremap <Leader>l <C-w>v<C-w>l
-nnoremap <Leader><space> :noh<cr>
+nnoremap <Leader>s <C-w>s<C-w>j
+nnoremap <Leader>x :noh<CR>
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)nmap <Leader><Leader> V
+vmap <C-v> <Plug>(expand_region_shrink) 
+nmap <Leader><Leader> V
 
 noremap / /\v
 vnoremap / /\v

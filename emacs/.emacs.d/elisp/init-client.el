@@ -36,7 +36,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 
 (defvar ha/fixed-font-family
-  (cond ((x-list-fonts "Inconsolata")     "Inconsolata")
+  (cond ((x-list-fonts "ProggyCleanTTCE")     "ProggyCleanTTCE-11:antialias=none")
         ((x-list-fonts "Hasklig")          "Hasklig")
         ((x-list-fonts "Source Code Pro") "Source Code Pro")
         ((x-list-fonts "Anonymous Pro")   "Anonymous Pro")
@@ -51,7 +51,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (when ha/fixed-font-family
   (set-frame-font ha/fixed-font-family)
-  (set-face-attribute 'default nil :font ha/fixed-font-family :height 100)
+  (set-face-attribute 'default nil :font ha/fixed-font-family)
   (set-face-font 'default ha/fixed-font-family))
 
 
@@ -80,7 +80,6 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
   :init (require 'color-theme)
   :config (use-package color-theme-sanityinc-tomorrow
             :ensure t))
-
 
 
 ;; The color themes work quite well, except they don't know about the

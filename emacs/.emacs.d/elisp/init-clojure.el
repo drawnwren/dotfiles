@@ -115,22 +115,6 @@ to the next parenthesis."
   :init
   (setq org-babel-clojure-backend 'cider))
 
-(use-package flycheck-clojure
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-flycheck-mode)
-  :config
-  (use-package flycheck
-    :config
-    (flycheck-clojure-setup)))
-
-(use-package flycheck-pos-tip
-  :ensure t
-  :config
-  (use-package flycheck
-    :config
-    (setq flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
-
 (use-package clj-refactor
   :ensure t
   :init

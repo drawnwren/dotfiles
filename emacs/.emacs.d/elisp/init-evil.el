@@ -21,7 +21,7 @@
   "Keymap for 'leader key' shortcuts.")
 
 (evil-define-key 'normal global-map " " my-leader-map)
-
+(evil-define-key 'normal global-map "f" 'avy-goto-char)
 (define-key my-leader-map "w" 'save-buffer)
 
 

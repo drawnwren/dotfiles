@@ -1,1 +1,4 @@
+# vim tmp files -_-
 *.un~
+# OS X >_>
+.DS_Store

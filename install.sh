@@ -9,7 +9,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
   pack='sudo pacman -S'
   leinvar='/usr/bin/lein'
   sudo pacman -Sy
-  $pack emacs, neovim
+  $pack emacs, neovim, build-essential, cmake, python-dev, python3-dev
 elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   # install brew

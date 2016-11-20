@@ -1,1 +1,4 @@
-Dotfile repository. Use GNU Stow to quickly deploy dotfiles to the appropriate locations.
+Dotfile repository. 
+
+Install.sh is designed to install everything correctly on OS X and Arch Linux.
+Uses the magic of bash and GNU stow.

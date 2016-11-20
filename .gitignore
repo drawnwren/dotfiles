@@ -2,3 +2,10 @@
 *.un~
 # OS X >_>
 .DS_Store
+# emacs directories
+ido.last
+smex-items
+backups/
+elpa/
+network-security.data
+custom.el

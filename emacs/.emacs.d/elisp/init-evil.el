@@ -27,7 +27,7 @@
 
 (define-key my-leader-map "b" 'list-buffers)
 
-(define-key my-leader-map "q" 'delete-window)
+(define-key my-leader-map "q" 'quit-window)
 
 (define-key my-leader-map "l" 'split-window-right)
 

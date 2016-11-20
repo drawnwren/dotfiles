@@ -1,15 +1,25 @@
 #! /bin/bash
+# TODO: still need to add font support and i3 for Arch
 
 unamestr=`uname`
 platform='unknown'
 pack='unknown'
+packages='git, stow, zsh'
 
 if [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
   pack='sudo pacman -S'
-  leinvar='/usr/bin/lein'
+  leinvar='/usr/bin/'
   sudo pacman -Sy
-  $pack emacs, neovim, build-essential, cmake, python-dev, python3-dev
+
+  # install listed packages
+  $pack $packages, emacs, neovim, build-essential, cmake, python-dev, python3-dev
+
+  # install yaourt
+  git clone https://aur.archlinux.org/package-query.git
+  cd package-query && makepkg -si && cd ..
+  git clone https://aur.archlinux.org/yaourt.git
+  cd yaourt && makepkg -si && cd ..
 elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   # install brew
@@ -17,14 +27,11 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 
   # install iterm
   brew cask install iterm2, emacs
-  leinvar='~/bin/lein'
+  leinvar='~/bin/'
   pack='brew install'
 
-  $pack neovim/neovim/neovim
+  $pack $packages, neovim/neovim/neovim
 fi
-
-# install git, stow, zsh
-$pack git, stow, zsh
 
 # config git
 git config --global user.name "Wren"
@@ -54,8 +61,9 @@ stow zsh
 ln -s dotfiles/vim/.vimrc ~/.config/nvim/init.vim
 
 # install lein
-sudo curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $leinvar
-chmod a+x $leinvar
+curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+sudo mv lein > $leinvar
+sudo chmod a+x $leinvar/lein
 lein
 
 # install nvm and use it to install node

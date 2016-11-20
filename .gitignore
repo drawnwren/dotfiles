@@ -1,7 +1,11 @@
+# dein install script
+deininstall.sh
 # vim tmp files -_-
 *.un~
+
 # OS X >_>
 .DS_Store
+
 # emacs directories
 ido.last
 smex-items

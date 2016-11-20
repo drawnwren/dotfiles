@@ -1,1 +1,1 @@
-/home/drew/.vimrc
+/home/wing/dotfiles/vim/.vimrc

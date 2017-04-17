@@ -2,6 +2,7 @@
 deininstall.sh
 # vim tmp files -_-
 *.un~
+*.swp
 
 # OS X >_>
 .DS_Store

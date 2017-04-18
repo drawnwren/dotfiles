@@ -6,32 +6,20 @@ platform='unknown'
 pack='unknown'
 packages='git, stow, zsh'
 
-if [[ "$unamestr" == 'Linux' ]]; then
-  platform='linux'
-  pack='sudo pacman -S'
-  leinvar='/usr/bin/'
-  sudo pacman -Sy
-
-  # install listed packages
-  $pack $packages, emacs, neovim, build-essential, cmake, python-dev, python3-dev
-
   # install yaourt
   git clone https://aur.archlinux.org/package-query.git
   cd package-query && makepkg -si && cd ..
   git clone https://aur.archlinux.org/yaourt.git
   cd yaourt && makepkg -si && cd ..
-elif [[ "$unamestr" == 'Darwin' ]]; then
-  platform='mac'
+# OS X
   # install brew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   # install iterm
-  brew cask install iterm2, emacs
+  brew cask install iterm2  
   leinvar='~/bin/'
   pack='brew install'
 
-  $pack $packages, neovim/neovim/neovim
-fi
 
 # config git
 git config --global user.name "Wren"
@@ -42,14 +30,6 @@ mkdir -p ~/.vim/tmp/undo//
 mkdir ~/.vim/tmp/backupdir/
 mkdir ~/.vim/tmp/swap/
 stow vim
-
-# install dein
-mkdir -p ~/.vim/dein/
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > deininstall.sh
-sh deininstall.sh ~/.vim/dein/
-
-# unstow emacs dotfiles
-stow emacs
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

@@ -1,0 +1,5 @@
+---
+neovim_packages:
+        - neovim
+        - python2-neovim
+        - python3-neovim

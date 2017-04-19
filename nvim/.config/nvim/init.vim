@@ -1,1 +1,0 @@
-/home/wing/dotfiles/vim/.vimrc

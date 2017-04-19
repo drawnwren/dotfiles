@@ -1,63 +1,59 @@
 ---
 # tasks file for vim
 # if fedora 25 or less, add repo
+# name: Add pre Fedora 25 repo and include vars
 - block:
-  name: Add pre Fedora 25 repo and include vars
-  include: Fedora_old.yml
-  yum_repository:
-          name: neovim
-          description: neovim repo
-          base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
-  vars:
-    loaded: true
-  when: 
-    - ansible_distribution == "Fedora" 
-    - ansible_distribution_version|int < 25
+    yum_repository:
+            name: neovim
+            description: neovim repo
+            base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
+    vars:
+      loaded: true
+    include: Fedora_old.yml
+    when: 
+      - ansible_distribution == "Fedora" 
+      - ansible_distribution_version|int < 25
 
 - block:
-  name: include generic distro variables
-  include: "{{ item }}"
-  with_first_found: 
-    - "{{ ansible_distribution }}.yml"
-    - "{{ ansible_os_family }}.yml"
-    - "default.yml"
-  when: loaded != true
-
+    include: "{{ item }}"
+    with_first_found: 
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - "default.yml"
+    when: loaded != true
+   
 - name: Install latest version of neovim and its supporting packages
   package: 
-          name: "{{ item }}"
-          state: latest
-  with_items: "{{ neovim_packages }}"
+    name: "{{ item }}"
+    state: latest
+  with_items: 
+    - "{{ neovim_packages }}"
 
-- name: Install Dein
-  tasks:
-    - name: Get the install script
-      get_url:
-        url: "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh" 
-        dest: "{{ ansible_env.HOME }}/dein.sh"
+- name: Get the install script
+  get_url:
+    url: "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh" 
+    dest: "{{ ansible_env.HOME }}/dein.sh"
 
-    - name: Execute it
-      script: "{{ ansible_env.HOME }}/dein.sh {{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim"
-      args:
-        creates: "{{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim/"
+- name: Execute it
+  script: "{{ ansible_env.HOME }}/dein.sh {{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim"
+  args:
+    creates: "{{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim/"
 
 # symlink .vimrc 
-- name: symlink .vimrc to .vimrc and init.vim
-  tasks:
-    - name: Symlink .vimrc to ~/.vimrc
-      file: 
-        src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
-        dest: "{{ ansible_env.HOME }}/.vimrc"
-        state: link
+- name: Symlink .vimrc to ~/.vimrc
+  file: 
+    src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+    state: link
 
-    - name: Ensure neovim config directory exists
-      file: 
-        path: "{{ ansible_env.HOME }}/.config/nvim/"
-        state: directory
-        mode: 0755
+- name: Ensure neovim config directory exists
+  file: 
+    path: "{{ ansible_env.HOME }}/.config/nvim/"
+    state: directory
+    mode: 0755
 
-    - name:  Symlink .vimrc to init.vim
-      file:
-        src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
-        dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
-        state: link
+- name:  Symlink .vimrc to init.vim
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
+    dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+    state: link

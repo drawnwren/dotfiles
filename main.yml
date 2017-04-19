@@ -1,0 +1,6 @@
+- roles:
+    - zsh
+    - emacs
+    - eclipse
+    - node
+    - vim

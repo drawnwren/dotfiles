@@ -5,32 +5,29 @@
     name: emacs
     state: latest
 
-# this won't install for each user
-- name: Install Spacemacs
-  tasks:
-    - name: Clone repo
-      git:
-        repo: https://github.com/syl120bnr/spacemacs/
-        dest: "{{ ansible_env.HOME }}/.emacs.d"
-        update: yes
+# install spacemacs
+- name: Clone repo
+  git:
+    repo: https://github.com/syl120bnr/spacemacs/
+    dest: "{{ ansible_env.HOME }}/.emacs.d"
+    update: yes
 
-    - name: Symlink .spacemacs
-      file:
-        src: "{{ ansible_env.HOME}}/dotfiles/.spacemacs"
-        dest: "{{ ansible_env.HOME }}/.spacemacs"
-        state: link
+- name: Symlink .spacemacs
+  file:
+    src: "{{ ansible_env.HOME}}/dotfiles/.spacemacs"
+    dest: "{{ ansible_env.HOME }}/.spacemacs"
+    state: link
 
-- name: Install Hasklig font
-  tasks:
-    - name: Download and unzip Hasklig
-      unarchive:
-      src: "https://github.com/i-tu/Hasklig/releases/download/{{ hasklig_version }}/Hasklig-{{ hasklig_version }}.zip"
-      dest: /usr/share/fonts
-      remote_src: True
-      vars: 
-        hasklig_version: "1.1"
+# install Hasklig
+- name: Download and unzip Hasklig
+  unarchive:
+    src: https://github.com/i-tu/Hasklig/releases/download/{{ hasklig_version }}/Hasklig-{{ hasklig_version }}.zip
+    dest: /usr/share/fonts
+    remote_src: true
+    vars: 
+      hasklig_version: "1.1"
 
-    - name: Update font cache
-      command: fc-cache
-          
+- name: Update font cache
+  command: fc-cache
+      
 

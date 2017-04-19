@@ -1,0 +1,9 @@
+---
+# install node with nvm
+- name: Install nvm
+  package:
+    name: nvm
+    state: latest
+
+- name: Install node with nvm
+  shell: "nvm install node"

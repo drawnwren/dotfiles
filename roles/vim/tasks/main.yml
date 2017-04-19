@@ -3,24 +3,24 @@
 # if fedora 25 or less, add repo
 # name: Add pre Fedora 25 repo and include vars
 - block:
-    yum_repository:
-            name: neovim
-            description: neovim repo
-            base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
-    vars:
-      loaded: true
-    include: Fedora_old.yml
+  - yum_repository:
+      name: neovim
+      description: neovim repo
+      base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
+    become: true
+  - include_vars: "vars/Fedora_old.yml"
     when: 
       - ansible_distribution == "Fedora" 
       - ansible_distribution_version|int < 25
 
-- block:
-    include: "{{ item }}"
-    with_first_found: 
-      - "{{ ansible_distribution }}.yml"
-      - "{{ ansible_os_family }}.yml"
-      - "default.yml"
-    when: loaded != true
+# if we haven't imported variables, try
+# for defaults
+- include_vars: "vars/{{ item }}"
+  with_first_found: 
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+    - "default.yml"
+  when: neovim_packages is undefined
    
 - name: Install latest version of neovim and its supporting packages
   package: 
@@ -28,6 +28,7 @@
     state: latest
   with_items: 
     - "{{ neovim_packages }}"
+  become: true
 
 - name: Get the install script
   get_url:

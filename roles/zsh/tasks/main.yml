@@ -3,12 +3,13 @@
 - name: Install the latest zsh
   package:
     name: zsh
-    status: latest
+    state: latest
+  become: true
 
 - name: Download oh-my-zsh install script
   get_url:
     url: "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
-    destination: "{{ ansible_env.HOME }}/dotfiles/ohmyzsh.sh"
+    dest: "{{ ansible_env.HOME }}/dotfiles/ohmyzsh.sh"
 
 - name: Execute the oh-my-zsh script if oh my zsh isn't installed
   script: "{{ ansible_env.HOME }}/dotfiles/ohmyzsh.sh"

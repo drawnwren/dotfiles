@@ -1,0 +1,7 @@
+---
+# ensures that we have ansible prereq packages
+# for now, only known dependency is python2-dnf on Fedora, 
+# I'll abstract this to a better solution if this becomes a problem
+- become: true
+  raw: dnf -y install python2 python2-dnf libselinux-python
+  when: ansible_distribution == "Fedora"

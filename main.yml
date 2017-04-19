@@ -1,4 +1,6 @@
-- roles:
+- hosts: localhost
+  roles:
+    - prerequisites
     - zsh
     - emacs
     - eclipse

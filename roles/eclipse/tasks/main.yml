@@ -1,2 +1,8 @@
 ---
 # tasks file for eclipse
+# get binary
+# untar it to /opt/
+# symlink the binary to /usr/local/bin/eclipse
+# ensure we have java
+# get eclimd jar
+# run headless install

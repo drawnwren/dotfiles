@@ -23,7 +23,7 @@
 
 - name: Symlink zshrc from dotfiles to ~/.zshrc
   file:
-    src: "{{ ansible_env.HOME }}/dotfiles/.zshrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/zsh/.zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
 

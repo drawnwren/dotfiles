@@ -30,7 +30,7 @@
     - "{{ neovim_packages }}"
   become: true
 
-- name: Get the install script
+- name: Get the Dein install script
   get_url:
     url: "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh" 
     dest: "{{ ansible_env.HOME }}/dein.sh"
@@ -43,7 +43,7 @@
 # symlink .vimrc 
 - name: Symlink .vimrc to ~/.vimrc
   file: 
-    src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/vim/.vimrc"
     dest: "{{ ansible_env.HOME }}/.vimrc"
     state: link
 
@@ -55,6 +55,6 @@
 
 - name:  Symlink .vimrc to init.vim
   file:
-    src: "{{ ansible_env.HOME }}/dotfiles/.vimrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/vim/.vimrc"
     dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
     state: link

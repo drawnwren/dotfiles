@@ -1,5 +1,7 @@
 # dein install script
 deininstall.sh
+# oh my zsh install script
+ohmyzsh.sh
 # vim tmp files -_-
 *.un~
 *.swp
@@ -7,7 +9,7 @@ deininstall.sh
 # OS X >_>
 .DS_Store
 
-# emacs directories
+# emacs 0.0
 ido.last
 smex-items
 backups/

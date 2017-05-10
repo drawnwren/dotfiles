@@ -2,7 +2,18 @@
 # tasks file for eclipse
 # get binary
 # untar it to /opt/
+- name: Download and untar eclipse
+  unarchive:
+    src: ""
+    dest: /opt/
+    remote_src: true
+    creates: "/opt/eclipse"
+
 # symlink the binary to /usr/local/bin/eclipse
+
 # ensure we have java
+- name: Get java packages
+  packages:
+
 # get eclimd jar
 # run headless install

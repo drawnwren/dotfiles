@@ -32,6 +32,10 @@
   when: dotspacemacs.stat.exists == false
   tags: emacs
 
+- debug:
+    msg: "Distribution is {{ ansible_distribution }}"
+  tags: emacs
+
 # install Hasklig, unless this is ArchLinux - then just use the package
 - name: Download and unzip Hasklig
   unarchive:
@@ -42,7 +46,6 @@
   become: true
   vars: 
     hasklig_version: "1.1"
-  debug: ansible_distribution
   when: ansible_distribution != "ArchLinux"
   tags: emacs
 

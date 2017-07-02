@@ -2,20 +2,29 @@
 # tasks file for eclipse
 # get binary
 # untar it to /opt/
+- name: gather os specific package name
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+  tags: eclipse
+
 - name: Download and untar eclipse
   unarchive:
     src: "http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/R/eclipse-java-oxygen-R-linux-gtk-x86_64.tar.gz"
     dest: /opt/
-    remote_src: true
+    remote_src: True
     creates: "/opt/eclipse"
+    tags: eclipse
 
 # symlink the binary to /usr/local/bin/eclipse
 
 # ensure we have java
 - name: Get java packages
-  packages:
-    package: jdk8-openjk
+  package:
+    name: "{{ java_package }}"
     state: latest
+  become: True
+  tags: eclipse
 
 # get eclimd jar
 # run headless install

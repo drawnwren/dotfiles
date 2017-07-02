@@ -1,0 +1,6 @@
+---
+nvm_dependencies:
+  - "git"
+  - "curl"
+  - "build-essential"
+  - "libssl-dev"

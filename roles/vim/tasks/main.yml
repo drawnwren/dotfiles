@@ -8,14 +8,14 @@
       description: neovim repo
       base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
     become: true
-  - include_vars: "vars/Fedora_old.yml"
+  - include_vars: "Fedora_old.yml"
     when: 
       - ansible_distribution == "Fedora" 
       - ansible_distribution_version|int < 25
 
 # if we haven't imported variables, try
 # for defaults
-- include_vars: "vars/{{ item }}"
+- include_vars: "{{ item }}"
   with_first_found: 
     - "{{ ansible_distribution }}.yml"
     - "{{ ansible_os_family }}.yml"

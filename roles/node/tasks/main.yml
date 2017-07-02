@@ -1,31 +1,49 @@
 ---
-# install node with nvm
-- name: Install nvm
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+  tags: node
+
+- name: Install dependencies
   package:
-    name: nvm
+    name: "{{ item }}"
     state: latest
-  become: true
+  with_items: "{{ nvm_dependencies }}"
+  become: True
+  tags: nvm
 
-- stat: path="{{ ansible_env.HOME }}/.nvm"
-  register: nvm_directory
-  
-- block:
-  - get_url:
-      url: "https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh"
-      dest: "{{ nvm }}" 
-  - script: "{{ nvm }}"
-  vars:
-    nvm_version: "0.32.1"
-    nvm: "{{ ansible_env.HOME }}/dotfiles/nvm_{{ nvm_version }}.sh"
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm"
+- name: Install nvm
+  git: "repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }}"
 
+- name: Source nvm in ~/.profile
+  become: True
+  become_user: "{{ local.user }}"
+  lineinfile: >
+    dest=~/.profile
+    line="source ~/.nvm/nvm.sh"
+    create=yes
+  tags: nvm
 
-# sh -c "$(curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh)"
-# export NVM_DIR="~/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# nvm install node
-# nvm use node
+- name: "Install {{ nvm.node_version }}"
+  command: "nvm install {{ nvm.node_version }}"
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stdout"
+  become: True
+  become_user: "{{ local.user }}"
+  tags: nvm
 
-- name: Install node with nvm
-  shell: "nvm install node && nvm use node"
+- name: "Check if {{ nvm.node_version }} is the default node version"
+  shell: "nvm ls | grep -e 'default -> {{ nvm.node_version }}'"
+  register: nvm_check_default
+  changed_when: False
+  ignore_errors: True
+  become: True
+  become_user: "{{ local.user }}"
+  tags: nvm
+
+- name: "Set default node version to {{ nvm.node_version }}"
+  command: "nvm alias default {{ nvm.node_version }}"
+  when: nvm_check_default|failed
+  become: True
+  become_user: "{{ local.user }}"
+  tags: nvm

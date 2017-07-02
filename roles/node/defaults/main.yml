@@ -1,2 +1,7 @@
 ---
 # defaults file for node
+# if a node version wasn't specified default to latest. This won't work with the installation checks.
+# if nvm version isn't specified, default to the newest at the time I wrote this -- yikes
+nvm:
+  node_version: "latest"
+  version: "0.33.2"

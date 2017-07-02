@@ -1,0 +1,6 @@
+---
+nvm_dependencies:
+  - "@Development tools"
+  - "openssl-devel"
+  - "curl"
+  - "git"

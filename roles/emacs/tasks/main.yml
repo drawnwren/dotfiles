@@ -46,12 +46,12 @@
   become: true
   vars: 
     hasklig_version: "1.1"
-  when: ansible_distribution != "ArchLinux"
+  when: ansible_distribution != "Archlinux"
   tags: emacs
 
 - name: Update font cache
   command: fc-cache
-  when: ansible_distribution != "ArchLinux"
+  when: ansible_distribution != "Archlinux"
   tags: emacs
       
 

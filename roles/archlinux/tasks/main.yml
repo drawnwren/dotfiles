@@ -1,0 +1,18 @@
+---
+# tasks file for archlinux
+- name: Add archlinux.fr to pacman.conf
+  blockinfile:
+    path: /etc/pacman.conf
+    block: |
+      [archlinuxfr]
+      SigLevel = Never
+      Server = http://repo.archlinux.fr/$arch| 
+  become: True
+
+- name: Update pacman
+  shell: pacman -Syu
+  become: True
+
+- name: install hasklig
+  shell: yaourt hasklig
+

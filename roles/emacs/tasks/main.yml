@@ -29,7 +29,7 @@
 
   when: dotspacemacs.stat.exists == false
 
-# install Hasklig
+# install Hasklig, unless this is ArchLinux - then just use the package
 - name: Download and unzip Hasklig
   unarchive:
     src: "https://github.com/i-tu/Hasklig/releases/download/{{ hasklig_version }}/Hasklig-{{ hasklig_version }}.zip"
@@ -39,6 +39,8 @@
   become: true
   vars: 
     hasklig_version: "1.1"
+  when:
+    ansible_distribution is not "ArchLinux"
 # TODO: when the zip file doesn't exist
 
 - name: Update font cache

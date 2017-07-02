@@ -1,0 +1,6 @@
+---
+# tasks file for stow
+- package:
+    name: stow
+    state: latest
+  become: True

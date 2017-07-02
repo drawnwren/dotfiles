@@ -216,7 +216,10 @@ galaxy_info:
     # NOTE: A tag is limited to a single word comprised of
     # alphanumeric characters. Maximum 20 tags per role.
 
-dependencies: []
+
+# I need zsh because I am installing nvm from oh-my-zsh
+dependencies: 
+  - { role: zsh }
   # List your role dependencies here, one per line.
   # Be sure to remove the '[]' above if you add dependencies
   # to this list.

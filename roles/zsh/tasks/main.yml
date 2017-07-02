@@ -4,27 +4,25 @@
   package:
     name: zsh
     state: latest
-  become: true
+  become: True
 
 - name: Download oh-my-zsh install script
   get_url:
     url: "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
     dest: "{{ ansible_env.HOME }}/dotfiles/ohmyzsh.sh"
 
-- name: Execute the oh-my-zsh script if oh my zsh isn't installed
+- name: "Execute the oh-my-zsh script if oh my zsh isn't installed"
   script: "{{ ansible_env.HOME }}/dotfiles/ohmyzsh.sh"
   args:
     creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
- 
+
 - name: Delete .zshrc
   file: 
     path: "{{ ansible_env.HOME }}/.zshrc"
     state: absent
 
-- name: Symlink zshrc from dotfiles to ~/.zshrc
-  file:
-    src: "{{ ansible_env.HOME }}/dotfiles/zsh/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
-    state: link
+- name: Symlink zshrc from dotfiles to ~/.zshrc and plugins to ~/.oh-my-zsh/plugins/
+  command: "stow zsh"
+ 
 
 

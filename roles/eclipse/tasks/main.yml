@@ -14,7 +14,7 @@
     dest: /opt/
     remote_src: True
     creates: "/opt/eclipse"
-    tags: eclipse
+  tags: eclipse
 
 # symlink the binary to /usr/local/bin/eclipse
 

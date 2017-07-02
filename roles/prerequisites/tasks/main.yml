@@ -6,6 +6,6 @@
   become: True
   when: ansible_distribution == "Fedora"
 
-- raw: pacman -S python2 python3
-  become: True
-  when: ansible_distribution == "Archlinux"
+# - raw: pacman -S python2 python3
+#  become: True
+#  when: ansible_distribution == "Archlinux"

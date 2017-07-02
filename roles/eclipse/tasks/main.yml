@@ -4,7 +4,7 @@
 # untar it to /opt/
 - name: Download and untar eclipse
   unarchive:
-    src: ""
+    src: "http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/R/eclipse-java-oxygen-R-linux-gtk-x86_64.tar.gz"
     dest: /opt/
     remote_src: true
     creates: "/opt/eclipse"
@@ -14,7 +14,7 @@
 # ensure we have java
 - name: Get java packages
   packages:
-    package: jdk8-openjdk
+    package: jdk8-openjk
     state: latest
 
 # get eclimd jar

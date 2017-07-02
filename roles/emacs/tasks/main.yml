@@ -42,6 +42,7 @@
   become: true
   vars: 
     hasklig_version: "1.1"
+  debug: ansible_distribution
   when: ansible_distribution != "ArchLinux"
   tags: emacs
 

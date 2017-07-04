@@ -16,3 +16,8 @@ backups/
 elpa/
 network-security.data
 custom.el
+
+# ansible files
+latest
+latest.*
+main.retry

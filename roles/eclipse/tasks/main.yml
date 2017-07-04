@@ -8,6 +8,7 @@
     - "{{ ansible_distribution }}.yml"
   tags: eclipse
 
+# just use the package for Arch
 - name: Download and untar eclipse
   unarchive:
     src: "http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/R/eclipse-java-oxygen-R-linux-gtk-x86_64.tar.gz"
@@ -15,6 +16,7 @@
     remote_src: True
     creates: "/opt/eclipse"
   tags: eclipse
+  when: ansible_distribution != "Archlinux"
 
 # symlink the binary to /usr/local/bin/eclipse
 

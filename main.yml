@@ -8,16 +8,3 @@
     - node
     - vim
 
-- name: Janky way to check for distro specific roles
-  tasks:
-    - stat: 
-        path: "{{ ansible_env.HOME }}/dotfiles/tasks/{{ ansible_distribution }}"
-        register: distribution_folder
-
-- name: Distribution specific files
-  hosts: local
-  connection: local
-- include: "{{ ansible_distribution }}"
-  when:
-    distribution_folder.stat.isdir is defined and distribution_folder.stat.isdir
-

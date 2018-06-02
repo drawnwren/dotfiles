@@ -1,5 +1,9 @@
+# Base16 shell colors
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/home/drew/.gem/ruby/2.3.0/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/home/drew/.gem/ruby/2.3.0/bin:$HOME/miniconda3/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -7,7 +11,7 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dieter"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

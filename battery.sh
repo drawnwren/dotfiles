@@ -1,0 +1,1 @@
+scripts/scripts/battery.sh

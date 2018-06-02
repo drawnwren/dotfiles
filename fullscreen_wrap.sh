@@ -1,0 +1,1 @@
+scripts/scripts/fullscreen_wrap.sh

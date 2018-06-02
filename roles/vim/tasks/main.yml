@@ -6,12 +6,15 @@
   - yum_repository:
       name: neovim
       description: neovim repo
-      base_url: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
+      baseurl: https://copr.fedoraproject.org/coprs/dperson/neovim/ 
     become: true
+    when:
+      - ansible_distribution == "Fedora"
   - include_vars: "Fedora_old.yml"
     when: 
       - ansible_distribution == "Fedora" 
       - ansible_distribution_version|int < 25
+  tags: vim
 
 # if we haven't imported variables, try
 # for defaults
@@ -21,6 +24,7 @@
     - "{{ ansible_os_family }}.yml"
     - "default.yml"
   when: neovim_packages is undefined
+  tags: vim
    
 - name: Install latest version of neovim and its supporting packages
   package: 
@@ -29,16 +33,20 @@
   with_items: 
     - "{{ neovim_packages }}"
   become: true
+  tags: vim
+
 
 - name: Get the Dein install script
   get_url:
     url: "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh" 
     dest: "{{ ansible_env.HOME }}/dein.sh"
+  tags: vim
 
 - name: Execute it
-  script: "{{ ansible_env.HOME }}/dein.sh {{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim"
+  script: "{{ ansible_env.HOME }}/dein.sh {{ ansible_env.HOME }}/.vim/dein"
   args:
     creates: "{{ ansible_env.HOME }}/.vim/dein/repos/github.com/Shougo/dein.vim/"
+  tags: vim
 
 # symlink .vimrc 
 - name: Symlink .vimrc to ~/.vimrc
@@ -46,15 +54,18 @@
     src: "{{ ansible_env.HOME }}/dotfiles/vim/.vimrc"
     dest: "{{ ansible_env.HOME }}/.vimrc"
     state: link
+  tags: vim
 
 - name: Ensure neovim config directory exists
   file: 
     path: "{{ ansible_env.HOME }}/.config/nvim/"
     state: directory
     mode: 0755
+  tags: vim
 
 - name:  Symlink .vimrc to init.vim
   file:
     src: "{{ ansible_env.HOME }}/dotfiles/vim/.vimrc"
     dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
     state: link
+  tags: vim

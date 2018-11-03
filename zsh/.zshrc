@@ -56,7 +56,7 @@ ZSH_THEME="dieter"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(nvm git colorize colored-man-pages dirpersist ssh-agent terminitor node \
-             redis lein npm wd nyan zsh-autosuggestions zsh-syntax-highlighting)
+             redis lein npm wd zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,3 +96,5 @@ alias vim="nvim"
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/wren/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+eval $(thefuck --alias)

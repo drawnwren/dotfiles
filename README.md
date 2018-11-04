@@ -8,7 +8,7 @@ node_version: "version of node to install, defaults to latest"
 
 
 # To install:
-ansible-playbook -i "localhost," main.yml
+ansible-playbook -i "local," main.yml
 
 # Arch rice
 SDDM theme: https://github.com/Eayu/sddm-theme-clairvoyance

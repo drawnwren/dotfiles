@@ -32,6 +32,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     vimscript
+     ruby
      ocaml
      python
      lua
@@ -40,7 +42,8 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
+     ;; helm
+     ivy
      auto-completion
      better-defaults
      git
@@ -330,7 +333,8 @@ you should place your code here."
         eclimd-default-workspace "~/code/jv/")
   ;; Clang format
   (add-hook 'c++-mode-hook 'clang-format-bindings)
-
+  (defun clang-format-bindings ()
+    (define-key c++-mode-map [tab] 'clang-format-buffer))
   ;; Auto recompile of latex
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
@@ -373,7 +377,7 @@ you should place your code here."
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(package-selected-packages
    (quote
-    (tuareg utop caml ocp-indent merlin reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic lua-mode color-theme-sanityinc-tomorrow base16-theme auctex-latexmk markdown-mode skewer-mode simple-httpd json-snatcher json-reformat gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck magit magit-popup git-commit with-editor dash-functional tern ghc haskell-mode eclim inflections edn multiple-cursors paredit peg cider seq queue clojure-mode auto-complete yasnippet undo-tree js2-mode hydra company async avy org-plus-contrib f s dash company-auctex auctex flycheck-ycmd disaster company-ycmd ycmd request-deferred deferred company-c-headers cmake-mode clang-format yaml-mode ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js2-refactor js-doc intero info+ indent-guide hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu elisp-slime-nav dumb-jump diff-hl define-word company-tern company-statistics company-ghci company-ghc company-emacs-eclim company-cabal column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (vimrc-mode dactyl-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tuareg utop caml ocp-indent merlin reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic lua-mode color-theme-sanityinc-tomorrow base16-theme auctex-latexmk markdown-mode skewer-mode simple-httpd json-snatcher json-reformat gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck magit magit-popup git-commit with-editor dash-functional tern ghc haskell-mode eclim inflections edn multiple-cursors paredit peg cider seq queue clojure-mode auto-complete yasnippet undo-tree js2-mode hydra company async avy org-plus-contrib f s dash company-auctex auctex flycheck-ycmd disaster company-ycmd ycmd request-deferred deferred company-c-headers cmake-mode clang-format yaml-mode ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js2-refactor js-doc intero info+ indent-guide hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu elisp-slime-nav dumb-jump diff-hl define-word company-tern company-statistics company-ghci company-ghc company-emacs-eclim company-cabal column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

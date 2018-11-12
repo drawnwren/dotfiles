@@ -1,23 +1,35 @@
 set nocompatible
+" Add the dein installation directory into runtimepath
+set runtimepath+=/Users/wren/.cache/dein/repos/github.com/Shougo/dein.vim
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.cache/dein')
+ call dein#begin('~/.cache/dein')
 
-call dein#begin('~/.vim/dein/')
-call dein#add('Shougo/dein.vim')
-call dein#add('flazz/vim-colorschemes')
-call dein#add('scrooloose/nerdtree')
-call dein#add('ryanoasis/vim-devicons')
-call dein#add('neomake/neomake')
-call dein#add('jpalardy/vim-slime')
-call dein#add('pangloss/vim-javascript')
-call dein#add('vim-airline/vim-airline')
-call dein#add('terryma/vim-expand-region')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('tomlion/vim-solidity')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('Valloric/YouCompleteMe')
-call dein#end()
+ call dein#add('~/.cache/dein')
+ call dein#add('Shougo/deoplete.nvim')
+ call dein#add('flazz/vim-colorschemes')
+ call dein#add('scrooloose/nerdtree')
+ call dein#add('ryanoasis/vim-devicons')
+ call dein#add('neomake/neomake')
+ call dein#add('jpalardy/vim-slime')
+ call dein#add('pangloss/vim-javascript')
+ call dein#add('vim-airline/vim-airline')
+ call dein#add('terryma/vim-expand-region')
+ call dein#add('airblade/vim-gitgutter')
+ call dein#add('ctrlpvim/ctrlp.vim')
+ call dein#add('tomlion/vim-solidity')
+ call dein#add('vim-airline/vim-airline-themes')
+ call dein#add('Valloric/YouCompleteMe')
+ call dein#add('vim-syntastic/syntastic')
+
+if !has('nvim')
+   call dein#add('roxma/nvim-yarp')
+   call dein#add('roxma/vim-hug-neovim-rpc')
+ endif
+
+ call dein#end()
+ call dein#save_state()
+endif
 
 filetype plugin indent on
 syntax enable
@@ -78,7 +90,7 @@ nnoremap <Leader>l <C-w>v<C-w>l
 nnoremap <Leader>s <C-w>s<C-w>j
 nnoremap <Leader>x :noh<CR>
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink) 
+vmap <C-v> <Plug>(expand_region_shrink)
 nmap <Leader><Leader> V
 
 noremap / /\v
@@ -124,7 +136,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-:set guioptions-=m 
-:set guioptions-=T 
-:set guioptions-=L 
-:set guioptions-=r 
+:set guioptions-=m
+:set guioptions-=T
+:set guioptions-=L
+:set guioptions-=r

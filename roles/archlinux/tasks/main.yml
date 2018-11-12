@@ -16,11 +16,7 @@
   tags: arch
 
 - name: install hasklig
-  shell: 'yaourt {{ item }}'
-    with_items:
-      - hasklig
-      - i3gaps
-      - i3blocks-gaps
+  shell: yaourt hasklig
   tags: arch
 
 - name: Arch specific packages
@@ -29,7 +25,4 @@
     state: latest
     with_items:
       - eclipse
-      - xorg
-      - blueberry
-
   tags: arch

@@ -30,8 +30,13 @@ URxvt*internalBorder: 20
 *background:              #383544
 *foreground:              #A09894
 
-rofi.font: Hasklig 10
-rofi.color-window: argb:80191919, argb:60181818, #191919
-rofi.color-normal: argb:0095C7AE, #A09894, argb:0095C7AE, argb:80101218, #95C7A1
+rofi.color-enabled: true
+rofi.font: Hasklig 12
+rofi.lines: 15
+!			bg	 	border	  separator
+! rofi.color-window: argb:80191919, argb:60181818, #191919
+!			bg	 	fg	  bg-alt	hl-bg	hl-fg
+! rofi.color-normal: argb:0095C7AE, #A09894, argb:0095C7AE, argb:80101218, #95C7A1
+rofi.theme: solarized
 rofi.padding: 400
 rofi.separator-style: none

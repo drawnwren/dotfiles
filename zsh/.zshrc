@@ -3,7 +3,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/home/drew/.gem/ruby/2.3.0/bin:$HOME/miniconda3/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/miniconda3/bin:$PATH:$HOME/.gem/ruby/2.6.0/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh

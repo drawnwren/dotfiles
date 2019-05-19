@@ -364,6 +364,9 @@ you should place your code here."
   ;; in c++ mode, tab will be clang format
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
+  ;; fix 2019 Helm error
+  (with-eval-after-load 'helm
+    (setq helm-display-function 'helm-default-display-buffer))
 )
 
 

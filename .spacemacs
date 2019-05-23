@@ -52,6 +52,7 @@ values."
      emacs-lisp
      haskell
      javascript
+     spacemacs-prettier
      java
      (latex :variables latex-enable-folding t)
      lua
@@ -335,14 +336,10 @@ you should place your code here."
   (setq eclim-executable "~/.eclipse/org.eclipse.platform_4.6.3_1473617060_linux_gtk_x86_64/plugins/org.eclim_2.6.0/bin/eclim"
         eclim-eclipse-dirs '("~/.eclipse" "/opt/eclipse")
         eclimd-default-workspace "~/code/jv/")
-  ;; Clang format
-  (add-hook 'c++-mode-hook 'clang-format-bindings)
-  (defun clang-format-bindings ()
-    (define-key c++-mode-map [tab] 'clang-format-buffer))
   ;; Auto recompile of latex
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
-  ;; change latex preview programs
+  ;; change latex preview programs dependent on which os we're on
   (cond
    ((string-equal system-type "darwin")
     (progn (setq TeX-view-program-selection '((output-pdf "Skim")))))
@@ -361,9 +358,22 @@ you should place your code here."
             (mode-io-correlate
              " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))))
 
+  ;; Javascript
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
+
+  (setq prettier-js-args '(
+                           "--no-semi"
+                           "--single-quote"
+                           ))
+
   ;; in c++ mode, tab will be clang format
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
+
+  ;; Clang format
+  (add-hook 'c++-mode-hook 'clang-format-bindings)
+
   ;; fix 2019 Helm error
   (with-eval-after-load 'helm
     (setq helm-display-function 'helm-default-display-buffer))

@@ -23,6 +23,9 @@
 
 - name: Symlink zshrc from dotfiles to ~/.zshrc and plugins to ~/.oh-my-zsh/plugins/
   command: "stow zsh"
- 
 
+- name: Clone the zsh-syntax-highlighting plugin into the plugins folder
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 

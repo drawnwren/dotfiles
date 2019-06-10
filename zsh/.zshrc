@@ -2,11 +2,6 @@
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# $PATH additions
-# removed: :/home/drew/.gem/ruby/2.3.0/bin:$HOME/miniconda3/bin
-# mac binary folders, homebrew
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 

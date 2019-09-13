@@ -110,3 +110,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # source nix-haskell cmd
 source $HOME/dotfiles/scripts/nix-haskell.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

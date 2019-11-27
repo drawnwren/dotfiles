@@ -87,7 +87,6 @@ alias emacs="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
 alias glumr="git pull upstream master --rebase"
 alias vim="nvim"
 alias mkdir="mkdir -pv"
@@ -112,4 +111,8 @@ export NVM_DIR="$HOME/.nvm"
 source $HOME/dotfiles/scripts/nix-haskell.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/Users/username/.pyenv:$PATH"
 
+source $HOME/.profile
+
+eval "$(pyenv init -)"

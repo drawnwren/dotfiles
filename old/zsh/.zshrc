@@ -4,12 +4,11 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cypher"
+ZSH_THEME="dieter"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -18,7 +17,11 @@ ZSH_THEME="cypher"
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.  DISABLE_AUTO_UPDATE="true" Uncomment the following line to change how often to auto-update (in days).  export UPDATE_ZSH_DAYS=13
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -49,8 +52,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent nvm git colorize colored-man-pages dirpersist terminitor node \
-             lein npm wd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(nvm git colorize colored-man-pages dirpersist ssh-agent terminitor node \
+             redis lein npm wd zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,12 +61,26 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='mvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="$HOME/.ssh/"
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# use emacs client as the OS editor
+export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c"
+# alias emacs -> emacs client
+alias emacs="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -76,16 +93,26 @@ alias mkdir="mkdir -pv"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/wren/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 eval $(thefuck --alias)
+
+# rbenv init
+eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
+# source nix-haskell cmd
+source $HOME/dotfiles/scripts/nix-haskell.sh
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/Users/username/.pyenv:$PATH"
 
 source $HOME/.profile
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if [ -e /home/wing/.nix-profile/etc/profile.d/nix.sh ]; then . /home/wing/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+eval "$(pyenv init -)"

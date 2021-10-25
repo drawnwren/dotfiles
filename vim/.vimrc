@@ -58,7 +58,7 @@ set noswapfile
 set nocompatible
 set clipboard=unnamedplus
 
-colorscheme molokai
+colorscheme Tomorrow-Night
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2

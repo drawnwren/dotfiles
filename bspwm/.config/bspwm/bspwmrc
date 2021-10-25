@@ -1,0 +1,34 @@
+#! /bin/sh
+
+xsetroot -cursor_name left_ptr
+xrdb ~/.Xresources
+picom -f &
+mpd &
+~/.config/polybar/launch.sh &
+~/.fehbg &
+pgrep -x shkd > /dev/null || sxhkd &
+
+bspc monitor -d term dev web code spotify downloads
+
+bspc config border_width	0
+bspc config window_gap		12
+bspc config top_padding		0
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+#bspc config focus_by_distance    true
+#bspc config history_aware_focus  true
+bspc config click_to_focus       true
+
+bspc config pointer_mod mod1
+bspc config pointer_action1 move
+
+bspc config top_padding 30
+bspc config bottom_padding 0
+bspc config left_padding 0
+bspc config right_padding 0
+
+bspc rule -a Gnome-calendar state=floating
+bspc rule -a urxvt state=floating
+bspc rule -a Alacritty desktop='^1' follow=on

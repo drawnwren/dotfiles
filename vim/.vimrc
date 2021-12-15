@@ -1,12 +1,10 @@
 set nocompatible
 " Add the dein installation directory into runtimepath
-set runtimepath+=/Users/wren/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('~/.cache/dein')
+if dein#min#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
-
- call dein#add('~/.cache/dein')
- call dein#add('Shougo/deoplete.nvim')
+ call dein#add('/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim')
  call dein#add('flazz/vim-colorschemes')
  call dein#add('scrooloose/nerdtree')
  call dein#add('ryanoasis/vim-devicons')
@@ -19,12 +17,36 @@ if dein#load_state('~/.cache/dein')
  call dein#add('ctrlpvim/ctrlp.vim')
  call dein#add('tomlion/vim-solidity')
  call dein#add('vim-airline/vim-airline-themes')
- call dein#add('Valloric/YouCompleteMe')
- call dein#add('vim-syntastic/syntastic')
 
-if !has('nvim')
+ " vim specific plugins
+ if !has('nvim')
    call dein#add('roxma/nvim-yarp')
    call dein#add('roxma/vim-hug-neovim-rpc')
+ " nvim specific plugins
+ else 
+  "common dependencies
+  call dein#add('nvim-lua/plenary.nvim')
+
+  "lsp
+  call dein#add('neovim/nvim-lspconfig')
+
+  " cmp
+  call dein#add('hrsh7th/cmp-nvim-lsp')
+  call dein#add('hrsh7th/cmp-buffer')
+  call dein#add('hrsh7th/cmp-path')
+  call dein#add('hrsh7th/cmp-cmdline')
+  call dein#add('hrsh7th/nvim-cmp')
+
+  " rust tools and debugging plugins
+  call dein#add('simrat39/rust-tools.nvim')
+  call dein#add('mfussenegger/nvim-dap')
+
+  "tree sitter
+  call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+
+  "telescope
+  call dein#add('nvim-telescope/telescope.nvim')
+  call dein#add('nvim-telescope/telescope-ui-select.nvim')
  endif
 
  call dein#end()
@@ -51,9 +73,9 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backupdir//
-set directory=~/.vim/tmp/swap//
+set undodir=~/.vim/tmp/undo
+set backupdir=~/.vim/tmp/backup
+set directory=~/.vim/tmp/swap
 set noswapfile
 set nocompatible
 set clipboard=unnamedplus
@@ -121,11 +143,6 @@ inoremap <right> <nop>
 
 nnoremap j gj
 nnoremap k gk
-
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 
 inoremap jk <ESC>
 

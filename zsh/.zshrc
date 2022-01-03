@@ -50,7 +50,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(ssh-agent nvm git colorize colored-man-pages dirpersist terminitor node \
-             lein npm wd zsh-autosuggestions zsh-syntax-highlighting)
+             lein npm wd zsh-autosuggestions zsh-syntax-highlighting rust)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,6 +75,7 @@ alias vim="nvim"
 alias mkdir="mkdir -pv"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias yeet="paru -Rcs"
 
 eval $(thefuck --alias)
 

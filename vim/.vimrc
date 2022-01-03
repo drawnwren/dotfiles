@@ -2,6 +2,7 @@ set nocompatible
 " Add the dein installation directory into runtimepath
 set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 
+
 if dein#min#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
  call dein#add('/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim')
@@ -17,6 +18,7 @@ if dein#min#load_state('~/.cache/dein')
  call dein#add('ctrlpvim/ctrlp.vim')
  call dein#add('tomlion/vim-solidity')
  call dein#add('vim-airline/vim-airline-themes')
+ call dein#add('jiangmiao/auto-pairs')
 
  " vim specific plugins
  if !has('nvim')

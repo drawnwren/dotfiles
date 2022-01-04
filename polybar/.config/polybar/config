@@ -24,11 +24,9 @@ enable-ipc = true
 background = ${colors.background}
 height = 30
 width  = 100%
-font-0 = JetBrains Mono Nerd Font Mono:style=Bold Italic:pixelsize=10;2
-font-1 = CoreUI\-Icons\-Brand:pixelsize=10;2
-font-2 = CoreUI\-Icons\-Free:pixelsize=10;2
+font-0 = JetBrains Mono Nerd Font Mono:style=Bold:pixelsize=10;2
+font-1 = "Material Icons:size=13;2:antialias=false"
 module-margin = 1
-modules-left = spotify-prev spotify-play-pause spotify-next
 padding-left = 117
 override-redirect = true
 wm-restack = bspwm
@@ -44,34 +42,13 @@ offset-x = 1%
 line-size = 2
 
 font-0 = JetBrains Mono Nerd Font Mono:style=Italic:pixelsize=12;2
-font-1 = CoreUI\-Icons\-Free:pixelsize=10;2
-font-2 = CoreUI\-Icons\-Brand:pixelsize=10;2
-font-3 = DankMono Nerd Font:pixelsize=13;2
-font-4 = FluentSystemIcons\-Regular:pixelsize=13;3
+font-1 = "Material Icons:size=13;2:antialias=false"
 
 
 padding-left = 2
 padding-right = 2
 modules-left = workspaces
 ;modules-right = screenshot filemanager
-module-margin = 1
-
-
-[bar/shortcuts]
-background = #85222222
-radius = 10
-width = 8%
-height = 20
-offset-y = 0.45%
-offset-x = 17%
-line-size = 2
-
-font-0 =JetBrains Mono Nerd Font Mono:pixelsize=13;2
-font-1 = FluentSystemIcons\-Regular:pixelsize=13;3
-font-2 = CoreUI\-Icons\-Brand:pixelsize=10;2
-padding-left = 2
-padding-right = 2
-modules-center = screenshot filemanager vscode vlc
 module-margin = 1
 
 [bar/media]
@@ -84,8 +61,8 @@ offset-x = 26%
 line-size = 2
 
 font-0 = JetBrains Mono Nerd Font Mono:style=Bold Italic:pixelsize=10;2
-font-1 = CoreUI\-Icons\-Brand:pixelsize=10;2
-font-2 = CoreUI\-Icons\-Free:pixelsize=10;2
+font-1 = "Material Icons:size=13;7:antialias=false"
+
 modules-left = cava
 module-margin = 1
 modules-center = spotify
@@ -100,8 +77,7 @@ offset-x = 42%
 line-size = 2
 
 font-0 = JetBrains Mono Nerd Font Mono:style=Bold Italic:pixelsize=10;2
-font-1 = CoreUI\-Icons\-Brand:pixelsize=10;2
-font-2 = CoreUI\-Icons\-Free:pixelsize=10;2
+font-1 = "Material Icons:size=13;7:antialias=false"
 module-margin = 1
 ;modules-right = spotify-prev spotify-play-pause spotify-next 
 padding-left = 1
@@ -126,7 +102,8 @@ offset-x = 53.5%
 line-size = 2
 
 font-0 = Inter:pixelsize=10;1
-font-1 = FluentSystemIcons\-Regular:pixelsize=14;2
+font-1 = "Material Icons:size=13;7:antialias=false"
+font-2 = FluentSystemIcons\-Regular:pixelsize=14;2
 modules-center = updates-pacman-aurhelper
 
 [bar/volume]
@@ -157,10 +134,9 @@ offset-x = 84%
 line-size = 2
 
 font-0 = Dank Mono:style=Italic:pixelsize=12;2
-font-1 = CoreUI\-Icons\-Free:pixelsize=10;2
-font-2 = CoreUI\-Icons\-Brand:pixelsize=10;2
-font-3 = DankMono Nerd Font:pixelsize=13;2
-font-4 = FluentSystemIcons\-Regular:pixelsize=15;4
+font-1 = Material Design Icons Desktop:pixelsize=13;3
+font-2 = DankMono Nerd Font:pixelsize=13;2
+font-3 = FluentSystemIcons\-Regular:pixelsize=15;4
 
 
 padding-left = 2
@@ -181,7 +157,7 @@ line-size = 2
 
 font-0 = Dank Mono:style=Bold Italic:pixelsize=10;2
 font-1 = FluentSystemIcons\-Regular:pixelsize=10;2
-modules-left = memory temp
+modules-left = memory
 module-margin = 1
 modules-center = speed bluetooth 
 
@@ -304,16 +280,12 @@ label= %time% %date%
 [module/workspaces]
 type = internal/bspwm
 fuzzy-match = true
-ws-icon-0 = term;
-ws-icon-1 = dev;
-ws-icon-2 = web;%{T3}%{T-}
-ws-icon-3 = reader;%{T3}%{T-}
-ws-icon-4 = media;%{T3}%{T-}
-ws-icon-5 = studio;
-ws-icon-6 = downloads;
-ws-icon-7 = mail;%{T3}%{T-}
-ws-icon-8 = office;%{T3}%{T-}
-ws-icon-9 = spotify;
+
+ws-icon-0 = term;%{T2}%{T-}
+ws-icon-1 = dev;%{T2}%{T-}
+ws-icon-2 = web;%{T2}%{T-}
+ws-icon-3 = spotify;%{T2}%{T-}
+
 
 ; Available tags:
 ;   <label-monitor>
@@ -343,7 +315,7 @@ label-dimmed-focused-background = #f00
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-focused = %icon% %name%
+label-focused = %name%
 label-focused-foreground = #ffffff
 label-focused-padding = 1
 label-occupied-foreground = #d3d3d3
@@ -355,8 +327,8 @@ label-focused-underline = #4C566A
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-occupied = %icon%
-label-occupied-padding = 1
+label-occupied = %index%%icon%
+;label-occupied-padding = 0.5
 ;label-occupied-underline = #555555
 
 ; Available tokens:
@@ -399,43 +371,6 @@ label-empty =
 ;label-separator = |
 ;label-separator-padding = 1
 label-separator-foreground = #00ffb52a
-
-[module/screenshot]
-type = custom/script
-exec = echo "%{T2}%{T-}" &
-format = "%{F#da294f}<label>%{F-}"
-click-left = ~/.config/sxhkd/scripts/screenshot-region.sh
-click-right = ~/.config/sxhkd/scripts/screenshot.sh
-tail = true
-
-[module/filemanager]
-type = custom/script
-exec = echo "%{T2}%{T-}" &
-format = "%{F#0099ff}<label>%{F-}"
-click-left = ranger
-tail = true
-
-[module/vscode]
-type = custom/script
-exec = echo "%{T2}%{T-}" &
-format = "%{F#0078d7}<label>%{F-}"
-click-left = code
-tail = true
-
-[module/vlc]
-type = custom/script
-exec = echo "%{T2}%{T-}" &
-format = "%{F#e85e00}<label>%{F-}"
-click-left = vlc
-tail = true
-
-[module/powermenu]
-type = custom/script
-exec = echo "%{T5}%{T-}"
-format = <label>
-click-left = ~/.config/rofi/applets/menu/powermenu.sh
-tail = true
-
 
 [module/cava]
 type = custom/script
@@ -485,14 +420,6 @@ label = %percentage_used%%
 format-prefix =   
 interval = 3
 
-[module/temp]
-type = internal/temperature
-thermal-zone = 0
-base-temperature = 20
-warn-temperature = 60
-format = <label>
-format-prefix = 
-interval = 1
 
 [module/bluetooth]
 type = custom/script
@@ -500,6 +427,5 @@ exec = rofi-bluetooth --status
 interval = 1
 click-left = rofi-bluetooth &
 
-; vim:ft=dosini
  
 

@@ -10,7 +10,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 polybar background &
 polybar left &
 echo "---" | tee -a /tmp/polybar1.log
-polybar shortcuts >>/tmp/polybar1.log 2>&1 &
 polybar media &
 polybar mediacontrols &
 polybar datetime &

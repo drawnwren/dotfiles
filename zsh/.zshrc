@@ -49,8 +49,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent nvm git colorize colored-man-pages dirpersist terminitor node \
-             lein npm wd zsh-autosuggestions zsh-syntax-highlighting rust)
+plugins=(ssh-agent nvm git colorize colored-man-pages dirpersist terminitor \
+             npm wd zsh-autosuggestions zsh-syntax-highlighting rust)
 
 source $ZSH/oh-my-zsh.sh
 

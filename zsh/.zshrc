@@ -88,7 +88,12 @@ alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
 
 
+# important typo plugin
 eval $(thefuck --alias)
+
+# 1password ssh-agent
+# requires a symlink on MacOS
+export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm

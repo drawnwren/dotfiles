@@ -72,10 +72,20 @@ export SSH_KEY_PATH="$HOME/.ssh/"
 #
 alias glumr="git pull upstream master --rebase"
 alias vim="nvim"
+
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
+alias bspwmrc="vim ~/.config/bspwm/bspwmrc"
+alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc"
+
 alias mkdir="mkdir -pv"
-alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias yeet="paru -Rcs"
+alias cat="bat"
+alias nvidia="optimus-manager --switch nvidia --no-confirm"
+alias hybrid="optimus-manager --switch hybrid --no-confirm"
+alias integrated="optimus-manager --switch integrated --no-confirm"
+
 
 eval $(thefuck --alias)
 
@@ -91,3 +101,5 @@ source $HOME/.xprofile
 
 if [ -e /home/wing/.nix-profile/etc/profile.d/nix.sh ]; then . /home/wing/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+export PATH="$PATH:/home/wing/.foundry/bin"

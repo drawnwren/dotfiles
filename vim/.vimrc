@@ -6,18 +6,29 @@ set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#min#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
  call dein#add('/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim')
+ "most important plugin
  call dein#add('flazz/vim-colorschemes')
+ 
  call dein#add('scrooloose/nerdtree')
  call dein#add('ryanoasis/vim-devicons')
  call dein#add('neomake/neomake')
  call dein#add('jpalardy/vim-slime')
- call dein#add('pangloss/vim-javascript')
+
+ "Airline + themes
  call dein#add('vim-airline/vim-airline')
+ call dein#add('vim-airline/vim-airline-themes')
+
  call dein#add('terryma/vim-expand-region')
  call dein#add('airblade/vim-gitgutter')
  call dein#add('ctrlpvim/ctrlp.vim')
+ "Solidity highlighting
  call dein#add('tomlion/vim-solidity')
- call dein#add('vim-airline/vim-airline-themes')
+ "JS highlighting
+ call dein#add('pangloss/vim-javascript')
+ "snippets
+ call dein#add('hrsh7th/vim-vsnip')
+ call dein#add('hrsh7th/vim-vsnip-integ')
+
  call dein#add('jiangmiao/auto-pairs')
 
  " vim specific plugins
@@ -31,6 +42,7 @@ if dein#min#load_state('~/.cache/dein')
 
   "lsp
   call dein#add('neovim/nvim-lspconfig')
+  call dein#add('folke/lsp-colors.nvim')
 
   " cmp
   call dein#add('hrsh7th/cmp-nvim-lsp')
@@ -46,6 +58,9 @@ if dein#min#load_state('~/.cache/dein')
   "tree sitter
   call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
 
+  "debugging 
+  call dein#add('mfussenegger/nvim-dap')
+
   "telescope
   call dein#add('nvim-telescope/telescope.nvim')
   call dein#add('nvim-telescope/telescope-ui-select.nvim')
@@ -58,22 +73,8 @@ endif
 filetype plugin indent on
 syntax enable
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd InsertLeave,TextChanged * update | Neomake
-
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 set undodir=~/.vim/tmp/undo
 set backupdir=~/.vim/tmp/backup

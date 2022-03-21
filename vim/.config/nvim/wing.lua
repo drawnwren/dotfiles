@@ -54,7 +54,7 @@ local rust_tools_opts = {
             other_hints_prefix = "=> ",
 
             -- whether to align to the length of the longest line in the file
-            max_len_align = false,
+            max_len_align = true,
 
             -- padding from the left if max_len_align is true
             max_len_align_padding = 1,
@@ -115,7 +115,14 @@ local rust_tools_opts = {
     }
 }
 require('rust-tools').setup(rust_tools_opts)
+require('rust-tools.inlay_hints').set_inlay_hints()
 
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
 -- telescope config
 local ts_opts = {
 }

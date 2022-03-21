@@ -18,6 +18,8 @@
 
 [colors]
 background = #26000000
+yellow = #fcee09
+magenta = #ff124f
 
 [bar/background]
 enable-ipc = true
@@ -34,7 +36,7 @@ wm-restack = bspwm
 [bar/left]
 background = #85222222
 radius = 10
-width = 15%
+width = 10%
 height = 23
 ;modules-left = date
 offset-y = 0.235%
@@ -45,8 +47,8 @@ font-0 = JetBrains Mono Nerd Font Mono:style=Italic:pixelsize=12;2
 font-1 = "Material Icons:size=13;2:antialias=false"
 
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 modules-left = workspaces
 ;modules-right = screenshot filemanager
 module-margin = 1
@@ -171,7 +173,8 @@ format-charging = %{F#76ED9B}<animation-charging>%{F-} <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging = %percentage%%
 label-discharging = %percentage%%
-label-full = Unplug me
+label-full-foreground = ${colors.yellow}
+label-full =  Unplug me
 
 ; Only applies if <ramp-capacity> is used
 ramp-capacity-0 = %{T5}%{T-}
@@ -284,52 +287,29 @@ fuzzy-match = true
 ws-icon-0 = term;%{T2}%{T-}
 ws-icon-1 = dev;%{T2}%{T-}
 ws-icon-2 = web;%{T2}%{T-}
-ws-icon-3 = spotify;%{T2}%{T-}
+ws-icon-3 = code;#!
+ws-icon-4 = spotify;%{T2}%{T-}
+ws-icon-default =
 
 
-; Available tags:
-;   <label-monitor>
-;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
-;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
-; Default: <label-state>
 format = <label-state> <label-mode>
 
-; Available tokens:
-;   %name%
-; Default: %name%
-label-monitor = %name%
-
-; If any values for label-dimmed-N are defined, the workspace/mode
-; colors will get overridden with those values if the monitor is out of focus
-; To only override workspaces in a specific state, use:
-;   label-dimmed-focused
-;   label-dimmed-occupied
-;   label-dimmed-urgent
-;   label-dimmed-empty
 label-dimmed-foreground = #555
 label-dimmed-underline = ${bar/top.background}
 label-dimmed-focused-background = #f00
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-focused = %name%
-label-focused-foreground = #ffffff
-label-focused-padding = 1
+label-focused = %icon%
+label-focused-foreground = ${colors.magenta}
+label-focused-padding = 2
 label-occupied-foreground = #d3d3d3
-;label-focused-background = #4C566A
-label-focused-underline = #4C566A
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-occupied = %index%%icon%
-;label-occupied-padding = 0.5
-;label-occupied-underline = #555555
+label-occupied = %index%
+label-occupied-padding = 2
 
 ; Available tokens:
 ;   %name%
@@ -346,7 +326,8 @@ label-urgent-underline = #9b0a20
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-empty = 
+label-empty = %index%
+label-empty-padding = 2
 ;label-empty-foreground = #55
 
 ; The following labels will be used to indicate the layout/mode
@@ -370,7 +351,7 @@ label-empty =
 ; Separator in between workspaces
 ;label-separator = |
 ;label-separator-padding = 1
-label-separator-foreground = #00ffb52a
+;label-separator-foreground = #00ffb52a
 
 [module/cava]
 type = custom/script

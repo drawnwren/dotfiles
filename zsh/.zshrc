@@ -91,10 +91,6 @@ alias integrated="optimus-manager --switch integrated --no-confirm"
 # important typo plugin
 eval $(thefuck --alias)
 
-# 1password ssh-agent
-# requires a symlink on MacOS
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
@@ -116,9 +112,8 @@ if [ -e /home/wing/.nix-profile/etc/profile.d/nix.sh ]; then . /home/wing/.nix-p
 source $HOME/.profile
 
 export PATH="/usr/local/sbin:/usr/local/anaconda/bin:$PATH"
-export PATH="$PATH:/home/wing/.foundry/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$PATH:/Users/wren/.foundry/bin"
+export PATH="$PATH:$HOME/wren/.foundry/bin"
 
 export PYENV_ROOT="/usr/local/var/pyenv"
 # pyenv
@@ -147,4 +142,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+# load $HOST specific setting
+
+if [[ -f ~/.zshrc-$HOST ]]; then
+   [[ ! -f ~/.zshrc-$HOST.zwc || ~/.zshrc-$HOST -nt ~/.zshrc-$HOST.zwc ]] && { zcompile ~/.zshrc-$HOST; print - compiled \~/.zshrc-$HOST. }
+   source ~/.zshrc-$HOST
+fi
 

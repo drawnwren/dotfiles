@@ -1,0 +1,3 @@
+# 1password ssh-agent
+# requires a symlink on MacOS
+export SSH_AUTH_SOCK=~/.1password/agent.sock

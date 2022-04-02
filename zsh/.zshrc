@@ -49,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent nvm git colorize colored-man-pages dirpersist terminitor \
+plugins=(nvm git colorize colored-man-pages dirpersist terminitor \
              npm wd zsh-autosuggestions zsh-syntax-highlighting rust)
 
 source $ZSH/oh-my-zsh.sh
@@ -63,8 +63,8 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="$HOME/.ssh/"
-eval $(ssh-agent)
+#export SSH_KEY_PATH="$HOME/.ssh/"
+#eval $(ssh-agent)
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

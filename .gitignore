@@ -21,3 +21,6 @@ custom.el
 latest
 latest.*
 main.retry
+
+# .env files shouldn't ever get here, but just in case
+.env

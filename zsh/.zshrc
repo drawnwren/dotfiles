@@ -97,7 +97,6 @@ export NVM_DIR="$HOME/.nvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source $HOME/.xprofile
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -113,3 +112,6 @@ if [[ -f ~/.zshrc-$HOST ]]; then
    source ~/.zshrc-$HOST
 fi
 
+# source "secrets"
+source $HOME/.env
+source $HOME/.xprofile

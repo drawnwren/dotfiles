@@ -63,8 +63,8 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-#export SSH_KEY_PATH="$HOME/.ssh/"
-#eval $(ssh-agent)
+export SSH_KEY_PATH="$HOME/.ssh/"
+eval $(ssh-agent)
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -91,6 +91,7 @@ alias integrated="optimus-manager --switch integrated --no-confirm"
 # important typo plugin
 eval $(thefuck --alias)
 
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
@@ -101,8 +102,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$PATH:$HOME/.foundry/bin"
-
+export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
 source "${HOME}/.profile"
 
 # load $HOST specific setting

@@ -31,6 +31,8 @@ if dein#min#load_state('~/.cache/dein')
 
  call dein#add('jiangmiao/auto-pairs')
 
+ call dein#add('dhruvasagar/vim-table-mode')
+
  " vim specific plugins
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
@@ -45,12 +47,20 @@ if dein#min#load_state('~/.cache/dein')
   call dein#add('folke/lsp-colors.nvim')
 
   " cmp
+  call dein#add('hrsh7th/nvim-cmp')
   call dein#add('hrsh7th/cmp-nvim-lsp')
   call dein#add('hrsh7th/cmp-buffer')
   call dein#add('hrsh7th/cmp-path')
   call dein#add('hrsh7th/cmp-cmdline')
-  call dein#add('hrsh7th/nvim-cmp')
+  call dein#add('hrsh7th/cmp-vsnip')
 
+  " popup for just one match, do not insert until a selection is made, 
+  " and force user to select, do not force
+  set completeopt=menuone,noinsert,noselect
+
+  "avoid showing extra messages when using completion
+  set shortmess+=c
+  
   " rust tools and debugging plugins
   call dein#add('simrat39/rust-tools.nvim')
   call dein#add('mfussenegger/nvim-dap')

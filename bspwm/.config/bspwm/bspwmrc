@@ -9,7 +9,7 @@ mpd &
 pgrep -x shkd > /dev/null || sxhkd &
 
 # cases for nvidia card and hybrid
-if [[$(xrandr -q | grep "HDMI-0 connected")]]; then
+if xrandr -q | grep "HDMI-0 connected"; then
   # nvidia card + external HDMI
     bspc monitor HDMI-0 -d term dev web code spotify
     bspc monitor eDP-1-1 -d social

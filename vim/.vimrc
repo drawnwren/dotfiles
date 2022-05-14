@@ -37,6 +37,9 @@ if dein#min#load_state('~/.cache/dein')
  " for making table in Markdown files
  call dein#add('dhruvasagar/vim-table-mode')
 
+ "rainbow
+ call dein#add('luochen1990/rainbow')
+
  " vim specific plugins
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
@@ -109,19 +112,25 @@ set autoindent
 set showmode
 set showcmd
 set hidden
+
 set wildmenu
 set wildmode=list:longest
+
 set visualbell
 set cursorline
 set ttyfast
 set ruler
 set laststatus=2
+
 " hybrid line number
 set number relativenumber
 set nu rnu
 set undofile
 
+"colors
+let g:rainbow_active=1
 colorscheme base16-tomorrow-night
+
 
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>

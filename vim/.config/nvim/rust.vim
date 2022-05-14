@@ -137,7 +137,7 @@ local rust_tools_opts = {
           },
         }
       }
-    }, -- rust-analyer options
+    }, -- rust-analyser options
 
     -- debugging stuff
     dap = {

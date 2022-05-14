@@ -1,4 +1,5 @@
 set nocompatible
+set lazyredraw
 " Add the dein installation directory into runtimepath
 set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -6,9 +7,7 @@ set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#min#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
  call dein#add('/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim')
- "most important plugin
- call dein#add('flazz/vim-colorschemes')
- 
+
  call dein#add('scrooloose/nerdtree')
  call dein#add('ryanoasis/vim-devicons')
  call dein#add('neomake/neomake')
@@ -21,16 +20,21 @@ if dein#min#load_state('~/.cache/dein')
  call dein#add('terryma/vim-expand-region')
  call dein#add('airblade/vim-gitgutter')
  call dein#add('ctrlpvim/ctrlp.vim')
+
  "Solidity highlighting
  call dein#add('tomlion/vim-solidity')
  "JS highlighting
  call dein#add('pangloss/vim-javascript')
+ "justfile highlighting
+ call dein#add('vmchale/just-vim')
  "snippets
  call dein#add('hrsh7th/vim-vsnip')
+
  call dein#add('hrsh7th/vim-vsnip-integ')
 
  call dein#add('jiangmiao/auto-pairs')
 
+ " for making table in Markdown files
  call dein#add('dhruvasagar/vim-table-mode')
 
  " vim specific plugins
@@ -39,12 +43,12 @@ if dein#min#load_state('~/.cache/dein')
    call dein#add('roxma/vim-hug-neovim-rpc')
  " nvim specific plugins
  else 
+  "most important plugin
+  call dein#add("RRethy/nvim-base16")
   "common dependencies
   call dein#add('nvim-lua/plenary.nvim')
-
   "lsp
   call dein#add('neovim/nvim-lspconfig')
-  call dein#add('folke/lsp-colors.nvim')
 
   " cmp
   call dein#add('hrsh7th/nvim-cmp')
@@ -93,7 +97,7 @@ set noswapfile
 set nocompatible
 set clipboard=unnamedplus
 
-colorscheme Tomorrow-Night
+
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -112,8 +116,12 @@ set cursorline
 set ttyfast
 set ruler
 set laststatus=2
-set relativenumber
+" hybrid line number
+set number relativenumber
+set nu rnu
 set undofile
+
+colorscheme base16-tomorrow-night
 
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>

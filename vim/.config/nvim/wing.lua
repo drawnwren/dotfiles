@@ -5,14 +5,6 @@ local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
 local nvim_lsp = require'lspconfig'
 
-
-require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981"
-})
-
 -- telescope config
 local ts_opts = {
   extensions = {

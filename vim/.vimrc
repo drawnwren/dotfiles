@@ -1,94 +1,94 @@
 set nocompatible
 set lazyredraw
-" Add the dein installation directory into runtimepath
-set runtimepath+=/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim
 
-
-if dein#min#load_state('~/.cache/dein')
- call dein#begin('~/.cache/dein')
- call dein#add('/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim')
-
- call dein#add('scrooloose/nerdtree')
- call dein#add('ryanoasis/vim-devicons')
- call dein#add('neomake/neomake')
- call dein#add('jpalardy/vim-slime')
-
- "Airline + themes
- call dein#add('vim-airline/vim-airline')
- call dein#add('vim-airline/vim-airline-themes')
-
- call dein#add('terryma/vim-expand-region')
- call dein#add('airblade/vim-gitgutter')
- call dein#add('ctrlpvim/ctrlp.vim')
-
- "Solidity highlighting
- call dein#add('tomlion/vim-solidity')
- "JS highlighting
- call dein#add('pangloss/vim-javascript')
- "justfile highlighting
- call dein#add('vmchale/just-vim')
- "snippets
- call dein#add('hrsh7th/vim-vsnip')
-
- call dein#add('hrsh7th/vim-vsnip-integ')
-
- call dein#add('jiangmiao/auto-pairs')
-
- " for making table in Markdown files
- call dein#add('dhruvasagar/vim-table-mode')
-
- "rainbow
- call dein#add('luochen1990/rainbow')
-
- " vim specific plugins
- if !has('nvim')
-   call dein#add('roxma/nvim-yarp')
-   call dein#add('roxma/vim-hug-neovim-rpc')
- " nvim specific plugins
- else 
-  "most important plugin
-  call dein#add("RRethy/nvim-base16")
-  "common dependencies
-  call dein#add('nvim-lua/plenary.nvim')
-  "lsp
-  call dein#add('neovim/nvim-lspconfig')
-
-  " cmp
-  call dein#add('hrsh7th/nvim-cmp')
-  call dein#add('hrsh7th/cmp-nvim-lsp')
-  call dein#add('hrsh7th/cmp-buffer')
-  call dein#add('hrsh7th/cmp-path')
-  call dein#add('hrsh7th/cmp-cmdline')
-  call dein#add('hrsh7th/cmp-vsnip')
-
-  " popup for just one match, do not insert until a selection is made, 
-  " and force user to select, do not force
-  set completeopt=menuone,noinsert,noselect
-
-  "avoid showing extra messages when using completion
-  set shortmess+=c
-  
-  " rust tools and debugging plugins
-  call dein#add('simrat39/rust-tools.nvim')
-  call dein#add('mfussenegger/nvim-dap')
-
-  "tree sitter
-  call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
-
-  "debugging 
-  call dein#add('mfussenegger/nvim-dap')
-
-  "telescope
-  call dein#add('nvim-telescope/telescope.nvim')
-  call dein#add('nvim-telescope/telescope-ui-select.nvim')
- endif
-
- call dein#end()
- call dein#save_state()
+"install plug if it hasn't been
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+call plug#begin('~/.vim/plugged')
+Plug '/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim'
+
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neomake/neomake'
+Plug 'jpalardy/vim-slime'
+
+"Airline + themes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'terryma/vim-expand-region'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+
+"Solidity highlighting
+Plug 'tomlion/vim-solidity'
+"JS highlighting
+Plug 'pangloss/vim-javascript'
+"justfile highlighting
+Plug 'vmchale/just-vim'
+"snippets
+Plug 'hrsh7th/vim-vsnip'
+
+Plug 'hrsh7th/vim-vsnip-integ'
+
+Plug 'jiangmiao/auto-pairs'
+
+" for making table in Markdown files
+Plug 'dhruvasagar/vim-table-mode'
+
+"rainbow
+Plug 'luochen1990/rainbow'
+
+"most important plugin(s?
+Plug 'RRethy/nvim-base16'
+Plug 'ful1e5/onedark.nvim'
+
+"common dependencies
+Plug 'nvim-lua/plenary.nvim'
+"lsp
+Plug 'neovim/nvim-lspconfig'
+
+" cmp
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-vsnip'
+
+
+" rust tools and debugging plugins
+Plug 'simrat39/rust-tools.nvim'
+Plug 'mfussenegger/nvim-dap'
+
+"tree sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"debugging
+Plug 'mfussenegger/nvim-dap'
+
+"telescope
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+call plug#end()
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 filetype plugin indent on
 syntax enable
+
+" popup for just one match, do not insert until a selection is made,
+" and force user to select, do not force
+set completeopt=menuone,noinsert,noselect
+
+"avoid showing extra messages when using completion
+set shortmess+=c
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd InsertLeave,TextChanged * update | Neomake

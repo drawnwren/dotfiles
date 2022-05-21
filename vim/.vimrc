@@ -129,7 +129,7 @@ set undofile
 
 "colors
 let g:rainbow_active=1
-colorscheme base16-tomorrow-night
+colorscheme base16-tomorrow-night-eighties
 
 
 let mapleader = "\<Space>"

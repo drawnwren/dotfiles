@@ -173,3 +173,4 @@ font-1 = ${fonts.icons1-1}
 modules-left = memory
 module-margin = 1
 modules-center = speed bluetooth 
+

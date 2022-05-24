@@ -60,7 +60,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-vsnip'
 
-
+"NeoFormat
+Plug 'sbdchd/neoformat'
 " rust tools and debugging plugins
 Plug 'simrat39/rust-tools.nvim'
 Plug 'mfussenegger/nvim-dap'
@@ -158,7 +159,8 @@ vnoremap <tab> %
 
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+let g:neoformat_enabled_python = ['black', 'yapf']
+set formatoptions=tcqrn1p
 set colorcolumn=85
 
 nnoremap <up> <nop>
@@ -187,3 +189,5 @@ nnoremap <C-l> <C-w>l
 :set guioptions-=T
 :set guioptions-=L
 :set guioptions-=r
+
+

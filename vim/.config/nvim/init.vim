@@ -5,5 +5,7 @@ source ~/.vimrc
 " behavior
 source ~/.config/nvim/wing.lua
 source ~/.config/nvim/rust.vim
+source ~/.config/nvim/python.vim
+
 
 

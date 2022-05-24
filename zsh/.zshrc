@@ -45,12 +45,16 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(nvm git colorize colored-man-pages dirpersist terminitor \
-             npm wd zsh-autosuggestions zsh-syntax-highlighting rust)
+plugins=( git colorize colored-man-pages dirpersist \
+              wd zsh-autosuggestions zsh-syntax-highlighting rust pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,6 +108,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
 source "${HOME}/.profile"
+
 
 # load $HOST specific setting
 

@@ -1,25 +1,10 @@
 "all of my rust config stuff,
 "it was getting confusing
-
 " Set updatetime for CursorHold
 set updatetime=300
 
 "show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false})
-
-nnoremap <silent> <c-;> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-
-nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
-
-nnoremap <silent> g; <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> g/ <cmd>lua vim.diagnostic.goto_next()<CR>
 
 " uses a fixed column for diagnostics to appear in
 set signcolumn=yes
@@ -28,6 +13,8 @@ set signcolumn=yes
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 
 lua <<EOF
+local lsp_utils = require "lsp_utils"    
+
 local rust_tools_opts = {
     -- ... other configs, which I don't have rn
     tools = { -- rust-tools options
@@ -145,8 +132,8 @@ local rust_tools_opts = {
             adapter = require('rust-tools.dap').get_codelldb_adapter(
             codelldb_path, liblldb_path)        
           }
-    }
+    },
+  on_attach = lsp_utils.on_attach
 }
 require('rust-tools').setup(rust_tools_opts)
-require('rust-tools.inlay_hints').set_inlay_hints()
 EOF

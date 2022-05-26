@@ -1,8 +1,3 @@
--- rust-tools codelldb fancy debugger setup
-local extension_path = '/home/wing/.vscode-oss/extensions/vadimcn.vscode-lldb-1.6.10/'
-local codelldb_path = extension_path .. 'adapter/codelldb'
-local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
-
 local nvim_lsp = require'lspconfig'
 
 -- telescope config

@@ -9,7 +9,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug '/home/wing/.cache/dein/repos/github.com/Shougo/dein.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -24,24 +23,28 @@ Plug 'terryma/vim-expand-region'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 
+"---------- Language Plugins ----------"
 "Solidity highlighting
 Plug 'tomlion/vim-solidity'
 "JS highlighting
 Plug 'pangloss/vim-javascript'
 "justfile highlighting
 Plug 'vmchale/just-vim'
+" for making table in Markdown files
+Plug 'dhruvasagar/vim-table-mode'
+
+" rust tools and debugging plugins
+Plug 'simrat39/rust-tools.nvim'
+
+"debugging
+Plug 'mfussenegger/nvim-dap'
+
 "snippets
 Plug 'hrsh7th/vim-vsnip'
-
 Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'jiangmiao/auto-pairs'
 
-" for making table in Markdown files
-Plug 'dhruvasagar/vim-table-mode'
-
-"rainbow
-Plug 'luochen1990/rainbow'
 
 "most important plugin(s?
 Plug 'RRethy/nvim-base16'
@@ -49,6 +52,7 @@ Plug 'ful1e5/onedark.nvim'
 
 "common dependencies
 Plug 'nvim-lua/plenary.nvim'
+
 "lsp
 Plug 'neovim/nvim-lspconfig'
 
@@ -62,15 +66,10 @@ Plug 'hrsh7th/cmp-vsnip'
 
 "NeoFormat
 Plug 'sbdchd/neoformat'
-" rust tools and debugging plugins
-Plug 'simrat39/rust-tools.nvim'
-Plug 'mfussenegger/nvim-dap'
+
 
 "tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"debugging
-Plug 'mfussenegger/nvim-dap'
 
 "telescope
 Plug 'nvim-telescope/telescope.nvim'
@@ -128,8 +127,6 @@ set number relativenumber
 set nu rnu
 set undofile
 
-"colors
-let g:rainbow_active=1
 colorscheme base16-tomorrow-night-eighties
 
 

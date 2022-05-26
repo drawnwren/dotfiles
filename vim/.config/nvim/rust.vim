@@ -1,3 +1,5 @@
+
+
 "all of my rust config stuff,
 "it was getting confusing
 " Set updatetime for CursorHold
@@ -13,7 +15,10 @@ set signcolumn=yes
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 
 lua <<EOF
-local lsp_utils = require "lsp_utils"    
+-- rust-tools codelldb fancy debugger setup
+local extension_path = '/home/wing/.vscode-oss/extensions/vadimcn.vscode-lldb-1.6.10/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
 local rust_tools_opts = {
     -- ... other configs, which I don't have rn
@@ -133,7 +138,7 @@ local rust_tools_opts = {
             codelldb_path, liblldb_path)        
           }
     },
-  on_attach = lsp_utils.on_attach
+  on_attach = require('lsp_utils').on_attach
 }
 require('rust-tools').setup(rust_tools_opts)
 EOF

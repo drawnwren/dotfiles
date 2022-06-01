@@ -1,5 +1,3 @@
-local nvim_lsp = require'lspconfig'
-
 -- telescope config
 local ts_opts = {
   extensions = {

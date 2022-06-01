@@ -122,6 +122,7 @@ local rust_tools_opts = {
     -- these override the defaults set by rust-tools.nvim
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
     server = {
+      on_attach = require('lsp_utils').on_attach,
       settings = {
         ["rust-analyzer"] = {
           checkOnSave = {
@@ -138,7 +139,6 @@ local rust_tools_opts = {
             codelldb_path, liblldb_path)        
           }
     },
-  on_attach = require('lsp_utils').on_attach
 }
 require('rust-tools').setup(rust_tools_opts)
 EOF

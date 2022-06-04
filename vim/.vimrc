@@ -10,8 +10,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+
 Plug 'neomake/neomake'
 Plug 'jpalardy/vim-slime'
 
@@ -25,7 +26,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 "---------- Language Plugins ----------"
 "Solidity highlighting
-Plug 'tomlion/vim-solidity'
+Plug 'TovarishFin/vim-solidity'
 "JS highlighting
 Plug 'pangloss/vim-javascript'
 "justfile highlighting
@@ -46,9 +47,9 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'jiangmiao/auto-pairs'
 
 
-"most important plugin(s?
+"most important plugin(s?) aka themes
 Plug 'RRethy/nvim-base16'
-Plug 'ful1e5/onedark.nvim'
+Plug 'folke/tokyonight.nvim'
 
 "common dependencies
 Plug 'nvim-lua/plenary.nvim'
@@ -67,6 +68,9 @@ Plug 'hrsh7th/cmp-vsnip'
 "NeoFormat
 Plug 'sbdchd/neoformat'
 
+"fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim' 
 
 "tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -127,7 +131,7 @@ set number relativenumber
 set nu rnu
 set undofile
 
-colorscheme base16-tomorrow-night-eighties
+colorscheme tokyonight
 
 
 let mapleader = "\<Space>"
@@ -136,6 +140,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ack
 nnoremap <Leader>n :NERDTree<CR>
+let g:NERDTreeQuitOnOpen = 1
 nnoremap <Leader>l <C-w>v<C-w>l
 nnoremap <Leader>s <C-w>s<C-w>j
 nnoremap <Leader>x :noh<CR>
@@ -176,6 +181,17 @@ nnoremap k gk
 inoremap jk <ESC>
 
 noremap gV `[v`]
+
+nnoremap H 0
+nnoremap L $
+nnoremap J G
+nnoremap K gg
+
+" make shift-tab de-indent
+" for command mode
+nnoremap <S-Tab> <<
+" for insert mode
+inoremap <S-Tab> <C-d>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

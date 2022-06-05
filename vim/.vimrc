@@ -10,7 +10,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
+"like NERDTree but CHADdier
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'neomake/neomake'
@@ -139,8 +140,7 @@ nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ack
-nnoremap <Leader>n :NERDTree<CR>
-let g:NERDTreeQuitOnOpen = 1
+nnoremap <Leader>n :CHADopen<CR>
 nnoremap <Leader>l <C-w>v<C-w>l
 nnoremap <Leader>s <C-w>s<C-w>j
 nnoremap <Leader>x :noh<CR>

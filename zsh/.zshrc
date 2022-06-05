@@ -90,7 +90,7 @@ alias cat="bat"
 alias nvidia="optimus-manager --switch nvidia --no-confirm"
 alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
-alias gm="rustup update && foundryup --version nightly"
+alias gm="rustup update && foundryup --version nightly && pyenv update && pyenv install 3:latest"
 
 
 # important typo plugin

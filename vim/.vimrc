@@ -51,6 +51,7 @@ Plug 'jiangmiao/auto-pairs'
 "most important plugin(s?) aka themes
 Plug 'RRethy/nvim-base16'
 Plug 'folke/tokyonight.nvim'
+Plug 'shaunsingh/nord.nvim'
 
 "common dependencies
 Plug 'nvim-lua/plenary.nvim'
@@ -133,7 +134,6 @@ set nu rnu
 set undofile
 
 colorscheme tokyonight
-
 
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>

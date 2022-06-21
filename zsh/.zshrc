@@ -1,6 +1,3 @@
-# Base16 shell colors
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 setopt shwordsplit  
 
 # Path to your oh-my-zsh installation.
@@ -91,10 +88,6 @@ alias nvidia="optimus-manager --switch nvidia --no-confirm"
 alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
 alias gm="rustup update && foundryup --version nightly && pyenv update"
-
-
-# important typo plugin
-eval $(thefuck --alias)
 
 
 export NVM_DIR="$HOME/.nvm"

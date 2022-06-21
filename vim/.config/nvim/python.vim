@@ -1,5 +1,3 @@
-
-
 " format on write
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 
@@ -10,6 +8,7 @@ local opts = {
     on_attach = require("lsp_utils").on_attach,
     settings = {
       pylsp = {
+        formatcommand = {"black"},
         plugins = {
           pylint = { enabled = true, executable = "pylint" },
           pyflakes = { enabled = false },

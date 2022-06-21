@@ -17,6 +17,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neomake/neomake'
 Plug 'jpalardy/vim-slime'
 
+" git
+Plug 'tpope/vim-fugitive'
+
 "Airline + themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -50,7 +53,7 @@ Plug 'jiangmiao/auto-pairs'
 
 "most important plugin(s?) aka themes
 Plug 'RRethy/nvim-base16'
-Plug 'folke/tokyonight.nvim'
+Plug 'folke/tokyonight.nvim', {'branch': 'main'}
 Plug 'shaunsingh/nord.nvim'
 
 "common dependencies

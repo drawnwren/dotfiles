@@ -8,9 +8,6 @@ set updatetime=300
 "show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false})
 
-" uses a fixed column for diagnostics to appear in
-set signcolumn=yes
-
 " format on write
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 

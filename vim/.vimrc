@@ -22,9 +22,25 @@ Plug 'tpope/vim-sleuth'
 " git
 Plug 'tpope/vim-fugitive'
 
-"Airline + themes
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+if has('nvim')
+  "Lualine
+  Plug 'nvim-lualine/Lualine.nvim'
+  " rust tools and debugging plugins
+  Plug 'simrat39/rust-tools.nvim'
+
+  "debugging
+  Plug 'mfussenegger/nvim-dap'
+  "common dependencies
+  Plug 'nvim-lua/plenary.nvim'
+
+  "lsp
+  Plug 'neovim/nvim-lspconfig'
+
+  " cmp
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+
+endif
 
 Plug 'terryma/vim-expand-region'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -39,12 +55,6 @@ Plug 'vmchale/just-vim'
 " for making table in Markdown files
 Plug 'dhruvasagar/vim-table-mode'
 
-" rust tools and debugging plugins
-Plug 'simrat39/rust-tools.nvim'
-
-"debugging
-Plug 'mfussenegger/nvim-dap'
-
 "snippets
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -53,19 +63,8 @@ Plug 'jiangmiao/auto-pairs'
 
 
 "most important plugin(s?) aka themes
-Plug 'RRethy/nvim-base16'
 Plug 'folke/tokyonight.nvim', {'branch': 'main'}
-Plug 'shaunsingh/nord.nvim'
 
-"common dependencies
-Plug 'nvim-lua/plenary.nvim'
-
-"lsp
-Plug 'neovim/nvim-lspconfig'
-
-" cmp
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
@@ -135,7 +134,7 @@ set laststatus=2
 " hybrid line number
 set number relativenumber
 set nu rnu
-set signcolumn=no
+set signcolumn=number
 set numberwidth=3
 set undofile
 

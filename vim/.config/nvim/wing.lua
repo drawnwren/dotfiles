@@ -12,6 +12,12 @@ require("telescope").setup(ts_opts)
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
 
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight'
+  }
+}
+
 -- nvim-cmp config
 -- Setup nvim-cmp.
 local cmp = require('cmp')

@@ -17,15 +17,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neomake/neomake'
 Plug 'jpalardy/vim-slime'
 
+" indentation
+Plug 'tpope/vim-sleuth'
 " git
 Plug 'tpope/vim-fugitive'
 
 "Airline + themes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 Plug 'terryma/vim-expand-region'
-Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 
 "---------- Language Plugins ----------"
@@ -78,7 +79,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
 "tree sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } 
 
 "telescope
 Plug 'nvim-telescope/telescope.nvim'
@@ -134,6 +135,8 @@ set laststatus=2
 " hybrid line number
 set number relativenumber
 set nu rnu
+set signcolumn=no
+set numberwidth=3
 set undofile
 
 colorscheme tokyonight
@@ -165,7 +168,7 @@ vnoremap <tab> %
 set wrap
 set textwidth=79
 let g:neoformat_enabled_python = ['black', 'yapf']
-set formatoptions=tcqrn1p
+set formatoptions=jcroql
 set colorcolumn=85
 
 nnoremap <up> <nop>

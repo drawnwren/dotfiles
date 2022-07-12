@@ -65,6 +65,7 @@ Plug 'jiangmiao/auto-pairs'
 "most important plugin(s?) aka themes
 Plug 'folke/tokyonight.nvim', {'branch': 'main'}
 
+Plug 'ryanoasis/vim-devicons'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'

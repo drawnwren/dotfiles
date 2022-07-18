@@ -67,6 +67,8 @@ source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="$HOME/.ssh/"
 eval $(ssh-agent)
 
+export EDITOR=vim
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -99,11 +101,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
+
+
 source "${HOME}/.profile"
 
 
 # load $HOST specific setting
-
 if [[ -f ~/.zshrc-$HOST ]]; then
    [[ ! -f ~/.zshrc-$HOST.zwc || ~/.zshrc-$HOST -nt ~/.zshrc-$HOST.zwc ]] && { zcompile ~/.zshrc-$HOST; print - compiled \~/.zshrc-$HOST. }
    source ~/.zshrc-$HOST
@@ -112,3 +115,6 @@ fi
 # source "secrets"
 source $HOME/.env
 source $HOME/.xprofile
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.poetry/bin:$PATH"

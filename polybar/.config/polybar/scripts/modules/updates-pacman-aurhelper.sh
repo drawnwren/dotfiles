@@ -15,7 +15,7 @@ fi
 
 updates=$((updates_arch + updates_aur))
 
-if [ "$updates" -gt 0 ]; then
+if [ "$updates" -gt 5 ]; then
     echo "$updates available" & 
     notify-send "Update available" -i ~/.config/dunst/icons/arrow-down-circled-svgrepo-com.svg "\"$updates\" to be exact. Feeling like a boomer. Update me." 
 else

@@ -133,7 +133,7 @@ font-1 = ${fonts.icons1-0}
 font-2 = ${fonts.icons2-0}
 font-3 = ${fonts.icons0-0}
 
-modules-center = backlight pulseaudio
+modules-center = backlight pipewire
 padding-left = 2
 module-margin = 1
 padding-right = 2

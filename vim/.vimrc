@@ -139,6 +139,7 @@ set signcolumn=number
 set numberwidth=3
 set undofile
 
+let g:tokyonight_style = "storm"
 colorscheme tokyonight
 
 let mapleader = "\<Space>"

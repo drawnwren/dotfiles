@@ -101,9 +101,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
+export PATH="$HOME/.poetry/bin:$PATH"
 
-
-source "${HOME}/.profile"
 
 
 # load $HOST specific setting
@@ -113,8 +112,8 @@ if [[ -f ~/.zshrc-$HOST ]]; then
 fi
 
 # source "secrets"
+source "${HOME}/.profile"
 source $HOME/.env
 source $HOME/.xprofile
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.poetry/bin:$PATH"

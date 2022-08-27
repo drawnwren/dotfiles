@@ -17,6 +17,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neomake/neomake'
 Plug 'jpalardy/vim-slime'
 
+" hard
+Plug 'dusans/vim-hardmode'
+
+Plug 'tpope/vim-surround'
+
 " indentation
 Plug 'tpope/vim-sleuth'
 " git

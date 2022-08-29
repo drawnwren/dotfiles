@@ -75,9 +75,10 @@ export EDITOR=vim
 # For a full list of active aliases, run `alias`.
 
 unalias gc
-function gc() {
+function gc
+{
    git add --all
-   gcmsg $1
+   git commit -m "$1"
    git push
 }
 

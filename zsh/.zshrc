@@ -54,7 +54,6 @@ plugins=( git colorize colored-man-pages dirpersist \
               wd zsh-autosuggestions zsh-syntax-highlighting rust pyenv)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

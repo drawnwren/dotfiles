@@ -63,8 +63,26 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-
+export SSH_KEY_PATH="$HOME/.ssh/"
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 export EDITOR=vim
+
+# search the .ssh for ssh keys and only add them if they aren't 
+# already  in the agent
+for possiblekey in ${HOME}/.ssh/*; do
+    if grep -q PRIVATE "$possiblekey"; then
+       $fingerprint = ssh-keygen -l -f id_rsa.pub
+       if ssh-add -l | grep $fingerprint; then
+          ssh-add "$possiblekey"
+       fi
+    fi
+done
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

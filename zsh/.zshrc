@@ -76,8 +76,7 @@ export EDITOR=vim
 # already  in the agent
 for possiblekey in ${HOME}/.ssh/*; do
     if grep -q PRIVATE "$possiblekey"; then
-       $fingerprint = ssh-keygen -l -f id_rsa.pub
-       if ssh-add -l | grep $fingerprint; then
+       if [[ -z "$( ssh-add -l | grep "$(ssh-keygen -l -f $possiblekey)" )"  ]]; then
           ssh-add "$possiblekey"
        fi
     fi

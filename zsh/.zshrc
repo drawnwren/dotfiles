@@ -63,8 +63,6 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="$HOME/.ssh/"
-eval $(ssh-agent)
 
 export EDITOR=vim
 

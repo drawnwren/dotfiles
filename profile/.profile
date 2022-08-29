@@ -4,5 +4,6 @@ usessh="yes"
 sshagent="yes"
 SSH_ASKPASS="/usr/bin/qt4-ssh-askpass"
 setxkbmap -option ctrl:nocaps
-ssh-add
+export SSH_KEY_PATH="$HOME/.ssh/"
+eval $(ssh-agent)
 

@@ -1,5 +1,3 @@
-
-
 "all of my rust config stuff,
 "it was getting confusing
 " Set updatetime for CursorHold

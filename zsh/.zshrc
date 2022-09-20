@@ -125,6 +125,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 
 # load $HOST specific setting
@@ -138,4 +141,5 @@ source "${HOME}/.profile"
 source $HOME/.env
 source $HOME/.xprofile
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 

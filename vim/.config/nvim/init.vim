@@ -10,6 +10,8 @@ source ~/.config/nvim/lua/lsp_utils.lua
 source ~/.config/nvim/rust.vim
 source ~/.config/nvim/python.vim
 source ~/.config/nvim/js.vim
+source ~/.config/nvim/go.vim
+
 
 
 

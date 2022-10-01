@@ -112,6 +112,7 @@ alias nvidia="optimus-manager --switch nvidia --no-confirm"
 alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
 alias gm="rustup update && foundryup --version nightly && pyenv update"
+alias tmux="tmux -2"
 
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"

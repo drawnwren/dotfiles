@@ -53,6 +53,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 "---------- Language Plugins ----------"
 "Solidity highlighting
 Plug 'TovarishFin/vim-solidity'
+"Jupyter Ascending
+Plug 'untitled-ai/jupyter_ascending.vim' 
 "JS highlighting
 Plug 'pangloss/vim-javascript'
 "justfile highlighting

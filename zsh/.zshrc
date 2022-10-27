@@ -42,8 +42,15 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+#python
+
+pyclean () {
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}
+
+#pyenv and poetry (poetry sources from .local/bin)
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$(pyenv root)/shims:$HOME/.local/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -122,9 +129,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 
+# yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$(pyenv root)/shims:$PATH:$HOME/.foundry/bin"
-export PATH="$HOME/.poetry/bin:$PATH"
+
+# foundry
+export PATH="$PATH:$HOME/.foundry/bin"
 
 # go
 export GOPATH="$HOME/go"

@@ -11,6 +11,8 @@ source ~/.config/nvim/rust.vim
 source ~/.config/nvim/python.vim
 source ~/.config/nvim/js.vim
 source ~/.config/nvim/go.vim
+source ~/.config/nvim/terraform.vim
+
 
 
 

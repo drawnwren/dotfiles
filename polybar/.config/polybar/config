@@ -157,6 +157,7 @@ padding-right = 2
 modules-center = wirelessnetwork battery powermenu
 ;modules-center = battery
 ;modules-right = powermenu
+tray-position = right
 module-margin = 2
 
 [bar/netspeed]

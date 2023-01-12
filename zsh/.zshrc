@@ -105,6 +105,7 @@ function gc
 
 alias glumr="git pull upstream master --rebase"
 alias vim="nvim"
+alias v="nvim"
 
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
@@ -120,6 +121,7 @@ alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
 alias gm="rustup update && foundryup --version nightly && pyenv update"
 alias tmux="tmux -2"
+alias tg="terragrunt"
 
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"

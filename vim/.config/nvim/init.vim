@@ -5,8 +5,13 @@ let &packpath=&runtimepath
 source ~/.vimrc
 " source an init lua file separately because I don't like init.lua's error
 " behavior
+
+source ~/.config/nvim/lua/plugins.lua
+
 source ~/.config/nvim/wing.lua
+
 source ~/.config/nvim/lua/lsp_utils.lua
+
 source ~/.config/nvim/rust.vim
 source ~/.config/nvim/python.vim
 source ~/.config/nvim/js.vim
@@ -17,7 +22,6 @@ augroup packer_user_config
   autocmd!
   autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source <afile> | PackerCompile
 augroup end
-source ~/.config/nvim/lua/plugins.lua
 
 
 

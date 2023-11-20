@@ -8,7 +8,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false})
 
 lua <<EOF
 -- rust-tools codelldb fancy debugger setup
-local extension_path = '/home/wing/.vscode-oss/extensions/vadimcn.vscode-lldb-1.7.0/'
+local extension_path = '/home/wing/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 local this_os = vim.loop.os_uname().sysname

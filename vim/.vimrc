@@ -24,32 +24,11 @@ Plug 'tpope/vim-surround'
 
 " indentation
 Plug 'tpope/vim-sleuth'
+
 " git
 Plug 'tpope/vim-fugitive'
 
 Plug 'github/copilot.vim'
-
-if has('nvim')
-  "Lualine
-  Plug 'nvim-lualine/Lualine.nvim'
-  " rust tools and debugging plugins
-  Plug 'simrat39/rust-tools.nvim'
-
-  "debugging
-  Plug 'mfussenegger/nvim-dap'
-  "common dependencies
-  Plug 'nvim-lua/plenary.nvim'
-
-  "lsp
-  Plug 'neovim/nvim-lspconfig'
-
-  " cmp
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-
-  "null-ls
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-endif
 
 Plug 'terryma/vim-expand-region'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -89,12 +68,7 @@ Plug 'sbdchd/neoformat'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
-"tree sitter
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } 
 
-"telescope
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-ui-select.nvim'
 call plug#end()
 
 " Run PlugInstall if there are missing plugins

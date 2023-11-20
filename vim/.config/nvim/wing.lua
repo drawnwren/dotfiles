@@ -90,8 +90,3 @@ require('nvim-treesitter.configs').setup {
     enable = true
   }
 }
-
-require('leetbuddy').setup({
-    domain = "com",  -- `cn` for chinese leetcode
-    language = "rs",
-})

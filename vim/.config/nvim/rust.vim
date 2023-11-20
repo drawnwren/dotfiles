@@ -6,14 +6,12 @@ set updatetime=300
 "show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false})
 
-" format on write
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
-
 lua <<EOF
 -- rust-tools codelldb fancy debugger setup
-local extension_path = '/home/wing/.vscode-oss/extensions/vadimcn.vscode-lldb-1.6.10/'
+local extension_path = '/home/wing/.vscode-oss/extensions/vadimcn.vscode-lldb-1.7.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+local this_os = vim.loop.os_uname().sysname
 
 local rust_tools_opts = {
     -- ... other configs, which I don't have rn
@@ -23,7 +21,7 @@ local rust_tools_opts = {
 
         -- Whether to show hover actions inside the hover window
         -- This overrides the default hover handler 
-        hover_with_actions = true,
+        -- hover_with_actions = true,
 
 		-- how to execute terminal commands
 		-- options right now: termopen / quickfix

@@ -12,7 +12,12 @@ source ~/.config/nvim/python.vim
 source ~/.config/nvim/js.vim
 source ~/.config/nvim/go.vim
 source ~/.config/nvim/terraform.vim
-
+"idk solc is broken rn source ~/.config/nvim/solidity.vim
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source <afile> | PackerCompile
+augroup end
+source ~/.config/nvim/lua/plugins.lua
 
 
 

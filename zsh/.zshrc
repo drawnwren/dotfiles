@@ -106,6 +106,8 @@ function gc
 alias glumr="git pull upstream master --rebase"
 alias vim="nvim"
 alias v="nvim"
+alias cat="bat"
+alias yeet="paru -Rcs"
 
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
@@ -114,8 +116,6 @@ alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc"
 
 alias mkdir="mkdir -pv"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias yeet="paru -Rcs"
-alias cat="bat"
 alias nvidia="optimus-manager --switch nvidia --no-confirm"
 alias hybrid="optimus-manager --switch hybrid --no-confirm"
 alias integrated="optimus-manager --switch integrated --no-confirm"
@@ -123,6 +123,8 @@ alias gm="rustup update && foundryup --version nightly && pyenv update"
 alias tmux="tmux -2"
 alias tg="terragrunt"
 
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -157,3 +159,5 @@ source $HOME/.xprofile
 
 
 eval $(thefuck --alias)
+eval $(bvm env) # init bun version manager, which we installed from cargo install --git https://github.com/swz-git/bvm
+alias bunx="bun x"

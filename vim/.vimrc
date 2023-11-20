@@ -27,6 +27,8 @@ Plug 'tpope/vim-sleuth'
 " git
 Plug 'tpope/vim-fugitive'
 
+Plug 'github/copilot.vim'
+
 if has('nvim')
   "Lualine
   Plug 'nvim-lualine/Lualine.nvim'
@@ -45,6 +47,8 @@ if has('nvim')
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
 
+  "null-ls
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 endif
 
 Plug 'terryma/vim-expand-region'

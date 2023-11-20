@@ -14,6 +14,7 @@ vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', op
 function utils.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.format(nil, {async = true})')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions

@@ -124,8 +124,8 @@ set signcolumn=number
 set numberwidth=3
 set undofile
 
-let g:tokyonight_style = "storm"
-colorscheme tokyonight
+"let g:tokyonight_style = "moon"
+colorscheme catppuccin-macchiato
 
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>

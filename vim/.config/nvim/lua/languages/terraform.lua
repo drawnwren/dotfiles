@@ -1,8 +1,4 @@
-lua <<EOF
 local opts = {
     on_attach = require("lsp_utils").on_attach,
   }
 require'lspconfig'.terraformls.setup(opts)
-EOF
-
-

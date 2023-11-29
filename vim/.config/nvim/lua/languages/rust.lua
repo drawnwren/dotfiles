@@ -1,12 +1,14 @@
-"all of my rust config stuff,
-"it was getting confusing
-" Set updatetime for CursorHold
-set updatetime=300
+--all of my rust config stuff,
+--it was getting confusing
+-- Set updatetime for CursorHold
+vim.opt.updatetime = 300
 
-"show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false})
+--show diagnostic popup on cursor hold
+vim.api.nvim_create_autocmd('CursorHold', {
+  pattern = '*',
+  command = 'lua vim.diagnostic.open_float(nil, {focusable = false})'
+})
 
-lua <<EOF
 -- rust-tools codelldb fancy debugger setup
 local extension_path = '/home/wing/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
@@ -120,4 +122,3 @@ local rust_tools_opts = {
     },
 }
 require('rust-tools').setup(rust_tools_opts)
-EOF

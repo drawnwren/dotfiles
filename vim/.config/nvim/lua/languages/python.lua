@@ -1,5 +1,4 @@
-" format on write
-lua <<EOF
+-- format on write
 local nvim_lsp = require("lspconfig")
 
 -- pretty empty rn
@@ -41,7 +40,6 @@ null_ls.setup({
         null_ls.builtins.formatting.black,
     },
 })
-EOF
 
 
 

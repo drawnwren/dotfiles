@@ -1,9 +1,25 @@
 return require('lazy').setup({
-   { "catppuccin/nvim", as = "catppuccin" },
-   'mfussenegger/nvim-dap',
+   "catppuccin/nvim",
+   "mfussenegger/nvim-dap",
+   {
+      "rcarriga/nvim-dap-ui",
+      lazy = false,
+      requires = {"mfussenegger/nvim-dap"},
+   },
+   "thehamsta/nvim-dap-virtual-text",
    'nvim-lualine/Lualine.nvim',
+   {
+       -- Which-key Extension
+       "folke/which-key.nvim",
+       lazy = true,
+   },
+
+
   -- rust tools and debugging plugins
-   'simrat39/rust-tools.nvim',
+   {
+    'simrat39/rust-tools.nvim',
+      config = require('languages/rust').config,
+   },
 
 
   --common dependencies
@@ -39,4 +55,6 @@ return require('lazy').setup({
   'tpope/vim-sleuth',
   'github/copilot.vim',
   'terryma/vim-expand-region',
+   'tpope/vim-surround',
+
 })

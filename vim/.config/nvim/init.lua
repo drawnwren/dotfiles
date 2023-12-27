@@ -22,13 +22,13 @@ vim.keymap.set("n", " ", "<Nop>", { silent = true, remap = false })
 vim.g.mapleader = " "
 vim.keymap.set("n", "<Leader>w", ":w<CR>", { silent = true, remap = true })
 vim.keymap.set("n", "<Leader>q", ":q<CR>", { silent = true, remap = true })
-vim.keymap.set("n", "<Leader>n", ":CHADopen<CR>", { silent = true, remap = true })
-vim.keymap.set("n", "<Leader>l", "<C-w>v<C-w>l", { silent = true, remap = true })
-vim.keymap.set("n", "<Leader>h", "<C-w>s<C-w>j", { silent = true, remap = true })
-vim.keymap.set("n", "<Leader>x", ":noh<CR>", { silent = true, remap = true })
-vim.keymap.set("v", "v", "<Plug>(expand_region_expand)", { silent = true, remap = true })
-vim.keymap.set("v", "<C-v>", "<Plug>(expand_region_shrink)", { silent = true, remap = true })
-vim.keymap.set("n", "<Leader><Leader>", "V", { silent = true, remap = true })
+vim.keymap.set("n", "<Leader>n", ":CHADopen<CR>", { silent = true, remap = true, desc = "Open CHADTree" })
+vim.keymap.set("n", "<Leader>l", "<C-w>v<C-w>l", { silent = true, remap = true, desc = "Split right" })
+vim.keymap.set("n", "<Leader>h", "<C-w>s<C-w>j", { silent = true, remap = true, desc = "Split below" })
+vim.keymap.set("n", "<Leader>x", ":noh<CR>", { silent = true, remap = true, desc = "Clear highlights" })
+vim.keymap.set("v", "v", "<Plug>(expand_region_expand)", { silent = true, remap = true, desc = "Expand region" })
+vim.keymap.set("v", "<C-v>", "<Plug>(expand_region_shrink)", { silent = true, remap = true, desc = "Shrink region" })
+vim.keymap.set("n", "<Leader><Leader>", "V", { silent = true, remap = true, desc = "Select line" })
 
 
 
@@ -84,10 +84,18 @@ if not ok then
 end
 
 
+-- save either by switching buffers or by losing focus
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, { callback = function() if vim.bo.modified and not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then vim.api.nvim_command('silent update') end end, })
+
 require("wing")
 require("lsp_utils")
 -- treesitter semantic highlight mappings
 require("highlight")
+
+
+require("wren-dap")
+
+require("whichkey")
 
 -- language specific changes
 require("languages/rust")

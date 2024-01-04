@@ -47,11 +47,29 @@ COMPLETION_WAITING_DOTS="true"
 pyclean () {
     find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 }
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/opt/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/opt/mambaforge/etc/profile.d/mamba.sh"
+fi
 
 #pyenv and poetry (poetry sources from .local/bin)
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$(pyenv root)/shims:$HOME/.local/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$(pyenv root)/shims:$HOME/.local/bin:$PATH"
+#eval "$(pyenv init -)"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -126,6 +144,9 @@ alias tg="terragrunt"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+alias ma='mamba deactivate && mamba activate'
+alias maa='mamba deactivate && mamba activate base'
+
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -161,3 +182,6 @@ source $HOME/.xprofile
 eval $(thefuck --alias)
 eval $(bvm env) # init bun version manager, which we installed from cargo install --git https://github.com/swz-git/bvm
 alias bunx="bun x"
+
+# For SkyPilot shell completion
+. ~/.sky/.sky-complete.zsh

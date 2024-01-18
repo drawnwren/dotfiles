@@ -66,6 +66,8 @@ if [ -f "/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/opt/mambaforge/etc/profile.d/mamba.sh"
 fi
 
+export DOPPLER_ENV=1
+export DOPPLER_ENV_LOGGING=1
 #pyenv and poetry (poetry sources from .local/bin)
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$(pyenv root)/shims:$HOME/.local/bin:$PATH"
@@ -118,6 +120,13 @@ function gc
 {
    git add --all
    git commit -m "$1"
+   git push
+}
+
+function gcx
+{
+   git add --all
+   git commit -m "x"
    git push
 }
 

@@ -49,12 +49,13 @@ return require('lazy').setup({
   'hrsh7th/cmp-nvim-lsp',
 
   --null-ls
-  'jose-elias-alvarez/null-ls.nvim',
+   'nvimtools/none-ls.nvim',
   'tpope/vim-fugitive',
   -- indentation
   'tpope/vim-sleuth',
   'github/copilot.vim',
   'terryma/vim-expand-region',
-   'tpope/vim-surround',
+  'tpope/vim-surround',
+   --'IndianBoy42/tree-sitter-just'
 
 })

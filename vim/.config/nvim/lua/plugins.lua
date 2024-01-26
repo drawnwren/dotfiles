@@ -51,11 +51,14 @@ return require('lazy').setup({
   --null-ls
    'nvimtools/none-ls.nvim',
   'tpope/vim-fugitive',
+  'samoshkin/vim-mergetool',
   -- indentation
   'tpope/vim-sleuth',
   'github/copilot.vim',
   'terryma/vim-expand-region',
   'tpope/vim-surround',
+   "williamboman/mason.nvim",
+   "williamboman/mason-lspconfig.nvim",
+   "neovim/nvim-lspconfig",
    --'IndianBoy42/tree-sitter-just'
-
 })

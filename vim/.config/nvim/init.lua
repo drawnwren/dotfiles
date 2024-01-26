@@ -29,10 +29,14 @@ vim.keymap.set("n", "<Leader>x", ":noh<CR>", { silent = true, remap = true, desc
 vim.keymap.set("v", "v", "<Plug>(expand_region_expand)", { silent = true, remap = true, desc = "Expand region" })
 vim.keymap.set("v", "<C-v>", "<Plug>(expand_region_shrink)", { silent = true, remap = true, desc = "Shrink region" })
 vim.keymap.set("n", "<Leader><Leader>", "V", { silent = true, remap = true, desc = "Select line" })
+vim.keymap.set("n", "<Leader>mt", "<plug>(MergetoolToggle)", { silent = true, remap = true, desc = "Toggle mergetool" })
+vim.keymap.set("n", "<Leader>mr", ":MergetoolToggleLayout mr", { silent = true, remap = true, desc = "Toggle mergetool" })
 
 
 
 
+-- vim.opt.mergetool_layout = 'mr'
+-- vim.opt.mergetool_prefer_revision = 'local'
 vim.opt.lazyredraw = true
 vim.opt.ttyfast = true
 vim.opt.visualbell = true
@@ -86,6 +90,10 @@ end
 
 -- save either by switching buffers or by losing focus
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, { callback = function() if vim.bo.modified and not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then vim.api.nvim_command('silent update') end end, })
+
+
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 require("wing")
 require("lsp_utils")

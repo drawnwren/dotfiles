@@ -156,6 +156,11 @@ alias pbpaste='xsel --clipboard --output'
 alias ma='mamba deactivate && mamba activate'
 alias maa='mamba deactivate && mamba activate base'
 
+# distant.nvim
+dist() {
+    ssh "$@" 'curl -L https://sh.distant.dev | sh -s -- --on-conflict overwrite'
+}
+
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 

@@ -1,4 +1,11 @@
 return require('lazy').setup({
+   {
+       'chipsenkbeil/distant.nvim', 
+       branch = 'v0.3',
+       config = function()
+           require('distant'):setup()
+       end
+   },
    "catppuccin/nvim",
    "mfussenegger/nvim-dap",
    {
@@ -32,11 +39,11 @@ return require('lazy').setup({
       version = nil, 
       build = ':TSUpdate'
   },  
-  {
-   'ms-jpq/chadtree', 
-   branch = 'chad', 
-   build = 'python3 -m chadtree deps'
-  },
+   {
+       "nvim-telescope/telescope-file-browser.nvim",
+       dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+   },
+
   --telescope
    'nvim-telescope/telescope.nvim',
    'nvim-telescope/telescope-ui-select.nvim',

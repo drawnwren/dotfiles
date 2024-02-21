@@ -3,7 +3,7 @@
 #
 
 # terminal emulator
-super + Return
+super + space
 	alacritty
 
 # program launcher
@@ -47,7 +47,7 @@ super + {_,shift + }w
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-super + space
+super + Return
 	bspc desktop -l next
 
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf

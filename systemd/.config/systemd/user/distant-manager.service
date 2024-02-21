@@ -1,0 +1,7 @@
+[Unit]
+Description=distant-manager
+[Service]
+ExecStart=/home/wing/.local/bin/distant manager listen --user
+Restart=on-failure
+[Install]
+WantedBy=default.target

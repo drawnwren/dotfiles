@@ -47,7 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 pyclean () {
     find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 }
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+#[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -55,7 +55,7 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/opt/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/opt/mambaforge/etc/profile.d/conda.sh"
+# . "/opt/mambaforge/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
         export PATH="/opt/mambaforge/bin:$PATH"
     fi
@@ -66,7 +66,10 @@ if [ -f "/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/opt/mambaforge/etc/profile.d/mamba.sh"
 fi
 
-export DOPPLER_ENV=1
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+#export DOPPLER_ENV=1
 export DOPPLER_ENV_LOGGING=1
 #pyenv and poetry (poetry sources from .local/bin)
 #export PYENV_ROOT="$HOME/.pyenv"
@@ -135,6 +138,8 @@ alias vim="nvim"
 alias v="nvim"
 alias cat="bat"
 alias yeet="paru -Rcs"
+alias deletemebranches="git branch --merged >/tmp/merged-branches && \
+  nvim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
 
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
@@ -156,6 +161,12 @@ alias pbpaste='xsel --clipboard --output'
 alias ma='mamba deactivate && mamba activate'
 alias maa='mamba deactivate && mamba activate base'
 
+alias yesyaml='for f in *; do [[ "$f" != *.* ]] && mv -- "$f" "$f.yaml"; done'
+alias noyaml='for f in *.yaml; do mv -- "$f" "${f%.yaml}"; done'
+
+alias k="kubectl"
+
+
 # distant.nvim
 dist() {
     ssh "$@" 'curl -L https://sh.distant.dev | sh -s -- --on-conflict overwrite'
@@ -173,6 +184,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # foundry
 export PATH="$PATH:$HOME/.foundry/bin"
+
+
+# kubectl krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # go
 export GOPATH="$HOME/go"
@@ -199,3 +214,27 @@ alias bunx="bun x"
 
 # For SkyPilot shell completion
 . ~/.sky/.sky-complete.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/wing/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/wing/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/wing/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/wing/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/wing/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/wing/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc

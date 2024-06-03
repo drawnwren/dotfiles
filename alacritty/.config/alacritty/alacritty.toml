@@ -32,7 +32,8 @@ TERM = "xterm-256color"
 size = 12.0
 
 [font.normal]
-family = "Borg Sans Mono Nerd Font"
+family = "Droid Sans Mono Slashed for Powerline"
+
 
 [[keyboard.bindings]]
 action = "Paste"

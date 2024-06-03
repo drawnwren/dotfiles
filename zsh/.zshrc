@@ -165,6 +165,7 @@ alias yesyaml='for f in *; do [[ "$f" != *.* ]] && mv -- "$f" "$f.yaml"; done'
 alias noyaml='for f in *.yaml; do mv -- "$f" "${f%.yaml}"; done'
 
 alias k="kubectl"
+alias p="poetry"
 
 
 # distant.nvim

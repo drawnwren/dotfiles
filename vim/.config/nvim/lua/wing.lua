@@ -88,6 +88,10 @@ require('nvim-treesitter.configs').setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
+    disable = function(lang, bufnr) --
+      -- Extend this to other languages by adding `lang == "x"` where x is the language
+      return lang == "json"
+    end,
     additional_vim_regex_highlighting = true,
   },
   indent = {
